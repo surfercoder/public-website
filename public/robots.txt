@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://agustincassani.com/sitemap.xml
+
+# Disallow PDF files from being indexed
+Disallow: /AgustinCassaniCV.pdf

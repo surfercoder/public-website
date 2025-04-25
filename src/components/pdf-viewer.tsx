@@ -2,11 +2,11 @@
 
 export default function PdfViewer() {
   return (
-    <div className="w-full">
+    <div className="w-full h-[calc(100vh*2)]">
       <iframe
+        className="w-full h-full border border-gray-200 rounded-lg"
         src="/AgustinCassaniCV.pdf"
-        className="w-full h-screen border border-gray-200 rounded-lg"
-        title="My Resume"
+        title="Agustin Cassani CV"
       />
     </div>
   )

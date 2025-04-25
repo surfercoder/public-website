@@ -65,7 +65,13 @@ export default function About() {
 
           <div className="order-1 lg:order-2 flex justify-center">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-xl">
-              <Image src="/profile-image.jpeg" alt="Agustin Cassani" fill className="object-cover" />
+              <Image 
+                alt="Agustin Cassani" 
+                className="object-cover" 
+                fill 
+                sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 320px"
+                src="/profile-image.jpeg" 
+              />
             </div>
           </div>
         </div>
