@@ -112,6 +112,22 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.pdf-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* For mobile scrolling fix */
+@media (max-width: 768px) {
+  .pdf-container {
+    height: auto;
+    overflow-y: visible;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
