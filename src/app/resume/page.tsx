@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Download, ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import PdfViewer from "@/components/pdf-viewer"
+import ResumeViewer from "@/components/resume-viewer"
 
 export const metadata: Metadata = {
   title: "Resume | Agustin Cassani",
@@ -37,7 +37,7 @@ export default function ResumePage() {
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-          <PdfViewer />
+          <ResumeViewer />
         </div>
       </div>
     </main>

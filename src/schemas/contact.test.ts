@@ -20,10 +20,10 @@ describe('ContactSchema', () => {
     expect(result.success).toBe(false);
     if (!result.success) {
       const errors = result.error.flatten().fieldErrors;
-      expect(errors.email).toEqual(["Required"]);
-      expect(errors.message).toEqual(["Required"]);
-      expect(errors.name).toEqual(["Required"]);
-      expect(errors.subject).toEqual(["Required"]);
+      expect(errors.email).toContain("Invalid input: expected string, received undefined");
+      expect(errors.message).toContain("Invalid input: expected string, received undefined");
+      expect(errors.name).toContain("Invalid input: expected string, received undefined");
+      expect(errors.subject).toContain("Invalid input: expected string, received undefined");
     }
   });
 

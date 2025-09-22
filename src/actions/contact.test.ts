@@ -41,7 +41,7 @@ describe('sendContact', () => {
     const result = await sendContact(EMPTY_ACTION_STATE, mockFormData);
 
     expect(result.fieldErrors).toHaveProperty('email');
-    expect(result.fieldErrors?.email).toEqual(["Required"]);
+    expect(result.fieldErrors?.email).toContain("Invalid input: expected string, received undefined");
   });
 
   it('handles email sending failure', async () => {

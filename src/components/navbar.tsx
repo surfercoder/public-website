@@ -1,19 +1,23 @@
 "use client"
 
-import { useState, useEffect, useRef, useMemo } from "react"
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import Link from "next/link"
 import { Menu, X, Download, Github, Linkedin, Instagram } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import ThemeToggle from "@/components/theme-toggle"
+import { usePathname } from "next/navigation"
+import { getInitialSection } from "@/lib/navigation"
 
-export default function Navbar() {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const observerRefs = useRef<IntersectionObserver[]>([])
+  const pathname = usePathname()
 
   // Define sections to observe
-  const sections = useMemo(() => ["home", "about", "experience", "skills", "contact"], []);
+  const sections = useMemo(() => ["home", "about", "experience", "skills", "contact"], [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +28,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Initialize/Sync active section based on current route and hash
   useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash : ""
+    setActiveSection(getInitialSection(pathname ?? "/", hash, sections))
+  }, [pathname, sections])
+
+  useEffect(() => {
+    if (pathname !== "/") return
     // Disconnect any existing observers
     observerRefs.current.forEach((observer) => observer.disconnect())
     observerRefs.current = []
@@ -57,20 +68,20 @@ export default function Navbar() {
       // Clean up observers on unmount
       observerRefs.current.forEach((observer) => observer.disconnect())
     }
-  }, [sections])
+  }, [sections, pathname])
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleMenu = useCallback(() => setIsOpen((v) => !v), [])
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { name: "Home", href: "/#home", section: "home" },
     { name: "About", href: "/#about", section: "about" },
     { name: "Experience", href: "/#experience", section: "experience" },
     { name: "Skills", href: "/#skills", section: "skills" },
     { name: "Contact", href: "/#contact", section: "contact" },
     { name: "Resume", href: "/resume", section: "resume" },
-  ]
+  ], [])
 
-  const socialLinks = [
+  const socialLinks = useMemo(() => [
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/agustincassani/",
@@ -86,12 +97,12 @@ export default function Navbar() {
       href: "https://www.instagram.com/thesurferdaddy/",
       icon: <Instagram className="h-5 w-5" />,
     },
-  ]
+  ], [])
 
-  const handleLinkClick = (section: string) => {
+  const handleLinkClick = useCallback((section: string) => {
     setActiveSection(section)
     setIsOpen(false)
-  }
+  }, [])
 
   return (
     <nav
@@ -138,6 +149,9 @@ export default function Navbar() {
                   </Link>
                 </Button>
               ))}
+
+              {/* Theme toggle */}
+              <ThemeToggle />
 
               <Button asChild variant="default" className="ml-2">
                 <Link href="/resume" className="flex items-center gap-2">
@@ -196,6 +210,9 @@ export default function Navbar() {
               </Button>
             ))}
 
+            {/* Theme toggle */}
+            <ThemeToggle />
+
             <Button asChild variant="default" className="ml-auto">
               <Link href="/resume" className="flex items-center gap-2">
                 <Download className="h-4 w-4" />
@@ -208,3 +225,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default React.memo(Navbar)

@@ -1,6 +1,6 @@
 "use client"
 
-import type React from "react"
+import React, { useEffect, useMemo, useState } from "react"
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
@@ -12,8 +12,7 @@ interface SkillCategory {
   skills: string[]
 }
 
-export default function Skills() {
-  const skillCategories: SkillCategory[] = [
+const SKILL_CATEGORIES: SkillCategory[] = [
     {
       title: "Frontend Development",
       icon: <Layout className="h-6 w-6 text-blue-600" />,
@@ -54,7 +53,20 @@ export default function Skills() {
       icon: <Terminal className="h-6 w-6 text-blue-600" />,
       skills: ["Git", "VS Code", "Jira", "Figma", "Postman", "Docker"],
     },
-  ]
+]
+
+function SkillsInner() {
+  const [reduced, setReduced] = useState(false)
+  const skillCategories = useMemo(() => SKILL_CATEGORIES, [])
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
+      try {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+        setReduced(!!mq.matches)
+      } catch {}
+    }
+  }, [])
 
   return (
     <section id="skills" className="py-20 bg-white dark:bg-gray-950">
@@ -71,9 +83,9 @@ export default function Skills() {
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              initial={reduced ? false : { opacity: 0, y: 16 }}
+              animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              transition={reduced ? { duration: 0 } : { duration: 0.3, delay: index * 0.08 }}
             >
               <Card className="h-full">
                 <CardContent className="p-6">
@@ -98,3 +110,5 @@ export default function Skills() {
     </section>
   )
 }
+
+export default React.memo(SkillsInner)

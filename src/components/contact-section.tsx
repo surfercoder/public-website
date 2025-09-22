@@ -1,11 +1,12 @@
 "use client"
 
+import React, { useMemo } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Linkedin, Github, Instagram } from "lucide-react"
 import ContactForm from "@/components/contact-form"
 
-export default function ContactSection() {
-  const contactInfo = [
+function ContactSection() {
+  const contactInfo = useMemo(() => [
     {
       icon: <Mail className="h-5 w-5 text-blue-600" />,
       title: "Email",
@@ -24,9 +25,9 @@ export default function ContactSection() {
       value: "Mendoza, Argentina",
       link: "https://maps.google.com/?q=Mendoza,Argentina",
     },
-  ]
+  ], [])
 
-  const socialLinks = [
+  const socialLinks = useMemo(() => [
     {
       icon: <Linkedin className="h-5 w-5" />,
       name: "LinkedIn",
@@ -42,7 +43,7 @@ export default function ContactSection() {
       name: "Instagram",
       url: "https://www.instagram.com/thesurferdaddy/",
     },
-  ]
+  ], [])
 
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -109,3 +110,5 @@ export default function ContactSection() {
     </section>
   )
 }
+
+export default React.memo(ContactSection)

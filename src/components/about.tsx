@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { MapPin, Calendar, Briefcase, GraduationCap } from "lucide-react"
+import { MapPin, Calendar, Briefcase, GraduationCap, Globe2 } from "lucide-react"
 import Image from "next/image"
 
 export default function About() {
@@ -58,6 +58,13 @@ export default function About() {
                 <CardContent className="p-4 flex items-center gap-3">
                   <Calendar className="h-5 w-5 text-blue-600" />
                   <span className="text-gray-700 dark:text-gray-300">Available for Projects</span>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-4 flex items-center gap-3">
+                  <Globe2 className="h-5 w-5 text-blue-600" />
+                  <span className="text-gray-700 dark:text-gray-300">Remote (Americas/EMEA)</span>
                 </CardContent>
               </Card>
             </div>

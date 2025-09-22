@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Briefcase, Calendar, ChevronDown, ChevronUp, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -17,16 +17,13 @@ interface Experience {
   achievements: string[]
 }
 
-export default function Experience() {
-  const [showAll, setShowAll] = useState(false)
-
-  const experiences: Experience[] = [
+const EXPERIENCES: Experience[] = [
     {
       id: "utn",
       company: "Universidad Tecnológica Nacional",
       position: "Professor (Contract)",
       period: "AUGUST 2023 - PRESENT",
-      location: "Mendoza",
+      location: "Mendoza, Argentina",
       type: "Contract",
       achievements: [
         "Crafted comprehensive curriculum for Software Engineering program, instructing 100+ students in modern JavaScript frameworks and tools",
@@ -39,7 +36,7 @@ export default function Experience() {
       company: "Leverege",
       position: "Senior React Native Developer",
       period: "AUGUST 2023 - FEBRUARY 2025",
-      location: "Mendoza",
+      location: "Mendoza, Argentina",
       type: "Remote",
       achievements: [
         "Architected core features for IoT mobile application that achieved 4.8/5 star rating across platforms",
@@ -54,7 +51,7 @@ export default function Experience() {
       company: "Bitovi",
       position: "Full Stack JavaScript Consultant",
       period: "AUGUST 2021 - JULY 2023",
-      location: "Mendoza",
+      location: "Mendoza, Argentina",
       type: "Remote",
       achievements: [
         "Delivered strategic technical guidance to 12+ client projects, consistently exceeding delivery expectations and KPIs",
@@ -69,7 +66,7 @@ export default function Experience() {
       company: "Kimetrica",
       position: "React Technical Lead Developer",
       period: "AUGUST 2020 - JULY 2021",
-      location: "Mendoza",
+      location: "Mendoza, Argentina",
       type: "Remote",
       achievements: [
         "Led team of 8 developers in delivering complex data visualization applications for international humanitarian organizations",
@@ -110,8 +107,55 @@ export default function Experience() {
         "Transformed network management tools that streamlined configuration time by 60% for enterprise clients",
       ],
     },
+    {
+      id: "careerlist",
+      company: "Careerlist",
+      position: "Solution Architect",
+      period: "AUGUST 2015 - JULY 2016",
+      location: "Remote",
+      type: "Remote",
+      achievements: [
+        "Designed scalable architecture supporting 200K+ daily active users across multiple platforms",
+      ],
+    },
+    {
+      id: "vmbc",
+      company: "VMBC",
+      position: "Technical Leader",
+      period: "NOVEMBER 2013 - JULY 2015",
+      location: "On-site",
+      type: "On-site",
+      achievements: [
+        "Orchestrated development team in delivering business-critical applications with 99.9% uptime",
+      ],
+    },
+    {
+      id: "exxonmobil",
+      company: "ExxonMobil",
+      position: "Intranet Application Developer",
+      period: "MAY 2011 - OCTOBER 2013",
+      location: "On-site",
+      type: "On-site",
+      achievements: [
+        "Innovated internal applications that expedited operations and saved 25+ hours per week in manual processes",
+      ],
+    },
   ]
 
+export default function Experience() {
+  const [showAll, setShowAll] = useState(false)
+  const [reduced, setReduced] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
+      try {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+        setReduced(!!mq.matches)
+      } catch {}
+    }
+  }, [])
+
+  const experiences = EXPERIENCES
   const displayedExperiences = showAll ? experiences : experiences.slice(0, 4)
 
   return (
@@ -129,9 +173,9 @@ export default function Experience() {
           {displayedExperiences.map((exp, index) => (
             <motion.div
               key={exp.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              initial={reduced ? false : { opacity: 0, y: 16 }}
+              animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              transition={reduced ? { duration: 0 } : { duration: 0.3, delay: index * 0.08 }}
             >
               <Card className="border-l-4 border-l-blue-600">
                 <CardHeader className="pb-2">
