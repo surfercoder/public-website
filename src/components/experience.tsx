@@ -173,7 +173,7 @@ export default function Experience() {
           {displayedExperiences.map((exp, index) => (
             <motion.div
               key={exp.id}
-              initial={reduced ? false : { opacity: 0, y: 16 }}
+              initial={reduced ? undefined : { opacity: 0, y: 16 }}
               animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
               transition={reduced ? { duration: 0 } : { duration: 0.3, delay: index * 0.08 }}
             >

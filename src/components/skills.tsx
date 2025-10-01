@@ -51,7 +51,7 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     {
       title: "Development Tools",
       icon: <Terminal className="h-6 w-6 text-blue-600" />,
-      skills: ["Git", "VS Code", "Jira", "Figma", "Postman", "Docker"],
+      skills: ["Git", "Cursor", "Windsurf", "Claude Code", "Figma", "Postman"],
     },
 ]
 
@@ -83,7 +83,7 @@ function SkillsInner() {
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
-              initial={reduced ? false : { opacity: 0, y: 16 }}
+              initial={reduced ? undefined : { opacity: 0, y: 16 }}
               animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
               transition={reduced ? { duration: 0 } : { duration: 0.3, delay: index * 0.08 }}
             >

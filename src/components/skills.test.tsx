@@ -132,7 +132,7 @@ describe('Skills', () => {
     render(<Skills />);
 
     expect(screen.getByText('Git')).toBeInTheDocument();
-    expect(screen.getByText('VS Code')).toBeInTheDocument();
+    expect(screen.getByText('Cursor')).toBeInTheDocument();
     expect(screen.getByText('Postman')).toBeInTheDocument();
   });
 

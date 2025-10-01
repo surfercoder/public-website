@@ -41,7 +41,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
             animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 16 }}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.1 }}
             className="mb-4"
@@ -57,7 +57,7 @@ export default function Hero() {
           </div>
 
           <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
             animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 16 }}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.3 }}
             className="mb-8"
@@ -71,7 +71,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
             animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 16 }}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -92,7 +92,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
         <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
+          initial={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
           animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={prefersReducedMotion ? { duration: 0 } : {
             duration: 0.4,

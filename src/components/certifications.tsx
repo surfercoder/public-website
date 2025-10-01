@@ -11,6 +11,11 @@ interface CertificationItem {
 
 const certifications: CertificationItem[] = [
   {
+    name: "Ethereum Blockchain Developer Bootcamp With Solidity",
+    issuer: "Udemy",
+    period: "2025",
+  },
+  {
     name: "Ethereum and Solidity: The Complete Developer's Guide",
     issuer: "Udemy",
     period: "2024",
