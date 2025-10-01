@@ -3,8 +3,6 @@ const CACHE_NAME = 'agustin-cassani-v1';
 const STATIC_CACHE_URLS = [
   '/',
   '/resume',
-  '/_next/static/css/',
-  '/_next/static/chunks/',
   '/profile-image.jpeg',
   '/AgustinCassaniCV.pdf'
 ];
@@ -14,7 +12,15 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        return cache.addAll(STATIC_CACHE_URLS);
+        // Cache each URL individually to handle failures gracefully
+        return Promise.allSettled(
+          STATIC_CACHE_URLS.map(url => 
+            cache.add(url).catch(err => {
+              console.warn(`Failed to cache ${url}:`, err);
+              return null; // Don't fail the entire operation
+            })
+          )
+        );
       })
       .then(() => self.skipWaiting())
   );
