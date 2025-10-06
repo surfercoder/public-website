@@ -114,7 +114,7 @@ function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link href="/" className="font-bold text-xl">
+            <Link href="/" className="font-bold text-xl text-gray-900 dark:text-white">
               Agustin Cassani
             </Link>
           </div>
@@ -142,7 +142,7 @@ function Navbar() {
 
             <div className="hidden md:flex items-center space-x-2 ml-4">
               {socialLinks.map((link) => (
-                <Button key={link.name} variant="ghost" size="icon" asChild className="rounded-full">
+                <Button key={link.name} variant="ghost" size="icon" asChild className="rounded-full text-gray-700 dark:text-gray-200">
                   <Link href={link.href} target="_blank" rel="noopener noreferrer">
                     {link.icon}
                     <span className="sr-only">{link.name}</span>
@@ -202,7 +202,7 @@ function Navbar() {
 
           <div className="flex items-center space-x-2 pt-4 px-3">
             {socialLinks.map((link) => (
-              <Button key={link.name} variant="ghost" size="icon" asChild className="rounded-full">
+              <Button key={link.name} variant="ghost" size="icon" asChild className="rounded-full text-gray-700 dark:text-gray-200">
                 <Link href={link.href} target="_blank" rel="noopener noreferrer">
                   {link.icon}
                   <span className="sr-only">{link.name}</span>

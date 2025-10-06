@@ -24,7 +24,7 @@ export default function ThemeToggle() {
       size="icon"
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="rounded-full"
+      className="rounded-full text-gray-700 dark:text-gray-200"
     >
       {/* Render a placeholder to keep dimensions consistent before mount */}
       {!mounted ? (
