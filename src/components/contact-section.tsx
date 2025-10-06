@@ -85,7 +85,7 @@ function ContactSection() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-colors"
+                  className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-sm text-gray-700 dark:text-gray-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-colors"
                   aria-label={social.name}
                 >
                   {social.icon}
