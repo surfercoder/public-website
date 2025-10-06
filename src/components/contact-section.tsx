@@ -1,49 +1,48 @@
-"use client"
-
-import React, { useMemo } from "react"
+import React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Linkedin, Github, Instagram } from "lucide-react"
 import ContactForm from "@/components/contact-form"
 
-function ContactSection() {
-  const contactInfo = useMemo(() => [
-    {
-      icon: <Mail className="h-5 w-5 text-blue-600" />,
-      title: "Email",
-      value: "agustinscassani@gmail.com",
-      link: "mailto:agustinscassani@gmail.com",
-    },
-    {
-      icon: <Phone className="h-5 w-5 text-blue-600" />,
-      title: "Phone",
-      value: "+54 9 (261) 688-6005",
-      link: "tel:+5492616886005",
-    },
-    {
-      icon: <MapPin className="h-5 w-5 text-blue-600" />,
-      title: "Location",
-      value: "Mendoza, Argentina",
-      link: "https://maps.google.com/?q=Mendoza,Argentina",
-    },
-  ], [])
+const contactInfo = [
+  {
+    icon: <Mail className="h-5 w-5 text-blue-600" />,
+    title: "Email",
+    value: "agustinscassani@gmail.com",
+    link: "mailto:agustinscassani@gmail.com",
+  },
+  {
+    icon: <Phone className="h-5 w-5 text-blue-600" />,
+    title: "Phone",
+    value: "+54 9 (261) 688-6005",
+    link: "tel:+5492616886005",
+  },
+  {
+    icon: <MapPin className="h-5 w-5 text-blue-600" />,
+    title: "Location",
+    value: "Mendoza, Argentina",
+    link: "https://maps.google.com/?q=Mendoza,Argentina",
+  },
+]
 
-  const socialLinks = useMemo(() => [
-    {
-      icon: <Linkedin className="h-5 w-5" />,
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/agustincassani/",
-    },
-    {
-      icon: <Github className="h-5 w-5" />,
-      name: "GitHub",
-      url: "https://github.com/surfercoder/",
-    },
-    {
-      icon: <Instagram className="h-5 w-5" />,
-      name: "Instagram",
-      url: "https://www.instagram.com/thesurferdaddy/",
-    },
-  ], [])
+const socialLinks = [
+  {
+    icon: <Linkedin className="h-5 w-5" />,
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/agustincassani/",
+  },
+  {
+    icon: <Github className="h-5 w-5" />,
+    name: "GitHub",
+    url: "https://github.com/surfercoder/",
+  },
+  {
+    icon: <Instagram className="h-5 w-5" />,
+    name: "Instagram",
+    url: "https://www.instagram.com/thesurferdaddy/",
+  },
+]
+
+function ContactSection() {
 
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -59,7 +58,7 @@ function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
-            <div className="space-y-6 mb-8">
+            <div className="space-y-6 mb-8" style={{ marginTop: "20px" }}>
               {contactInfo.map((item, index) => (
                 <a
                   key={index}
@@ -79,7 +78,7 @@ function ContactSection() {
               ))}
             </div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Connect With Me</h3>
-            <div className="flex gap-4">
+            <div className="flex gap-4" style={{ marginTop: "20px" }}>
               {socialLinks.map((social, index) => (
                 <a
                   key={index}

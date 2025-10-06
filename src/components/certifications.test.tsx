@@ -18,8 +18,11 @@ describe('Certifications', () => {
   it('renders all certification items', () => {
     render(<Certifications />);
 
+    expect(screen.getByText('Software Development with AI')).toBeInTheDocument();
+    expect(screen.getByText('BIG School')).toBeInTheDocument();
+    
     expect(screen.getByText('Ethereum Blockchain Developer Bootcamp With Solidity')).toBeInTheDocument();
-    expect(screen.getByText('2025')).toBeInTheDocument();
+    expect(screen.getAllByText('2025').length).toBeGreaterThanOrEqual(2);
     expect(screen.getByText("Ethereum and Solidity: The Complete Developer's Guide")).toBeInTheDocument();
     expect(screen.getByText('Next JS: The Complete Developer\'s Guide')).toBeInTheDocument();
     expect(screen.getByText('Internet of Things: Roadmap to a Connected World')).toBeInTheDocument();

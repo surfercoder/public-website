@@ -1,8 +1,8 @@
 // Service Worker for caching and performance optimization
-const CACHE_NAME = 'agustin-cassani-v1';
+const CACHE_NAME = 'agustin-cassani-v2';
+// Only cache truly static, long-lived assets. Avoid caching dynamic pages in SW.
 const STATIC_CACHE_URLS = [
   '/',
-  '/resume',
   '/profile-image.jpeg',
   '/AgustinCassaniCV.pdf'
 ];
@@ -46,32 +46,46 @@ self.addEventListener('fetch', (event) => {
   // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
+  const requestUrl = event.request.url;
+
   // Skip cross-origin requests
-  if (!event.request.url.startsWith(self.location.origin)) return;
+  if (!requestUrl.startsWith(self.location.origin)) return;
 
+  // Never intercept Next.js build/runtime assets or RSC/chunks
+  if (requestUrl.includes('/_next/')) {
+    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+    return;
+  }
+
+  // Network-first for documents (HTML navigations) to avoid serving stale pages
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          // Optionally cache the fresh document
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone)).catch(() => {});
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Cache-first for other same-origin GET requests, with network fallback
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return fetch(event.request).then((response) => {
-          // Don't cache if not a valid response
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) return cachedResponse;
+      return fetch(event.request)
+        .then((response) => {
           if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
-
-          // Clone the response
           const responseToCache = response.clone();
-
-          caches.open(CACHE_NAME)
-            .then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
-
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseToCache)).catch(() => {});
           return response;
-        });
-      })
+        })
+        .catch(() => undefined);
+    })
   );
 });

@@ -1,8 +1,4 @@
-"use client"
-
-import React, { useEffect, useMemo, useState } from "react"
-
-import { motion } from "framer-motion"
+import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Code, Database, Layout, Server, Terminal, TestTube, Cloud, Blocks } from "lucide-react"
 
@@ -56,17 +52,7 @@ const SKILL_CATEGORIES: SkillCategory[] = [
 ]
 
 function SkillsInner() {
-  const [reduced, setReduced] = useState(false)
-  const skillCategories = useMemo(() => SKILL_CATEGORIES, [])
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
-      try {
-        const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-        setReduced(!!mq.matches)
-      } catch {}
-    }
-  }, [])
+  const skillCategories = SKILL_CATEGORIES
 
   return (
     <section id="skills" className="py-20 bg-white dark:bg-gray-950">
@@ -80,13 +66,8 @@ function SkillsInner() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={reduced ? undefined : { opacity: 0, y: 16 }}
-              animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-              transition={reduced ? { duration: 0 } : { duration: 0.3, delay: index * 0.08 }}
-            >
+          {skillCategories.map((category) => (
+            <div key={category.title}>
               <Card className="h-full">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
@@ -103,7 +84,7 @@ function SkillsInner() {
                   </ul>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

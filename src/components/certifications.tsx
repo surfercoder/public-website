@@ -1,5 +1,3 @@
-"use client"
-
 import { Award, Calendar } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -10,6 +8,11 @@ interface CertificationItem {
 }
 
 const certifications: CertificationItem[] = [
+  {
+    name: "Software Development with AI",
+    issuer: "BIG School",
+    period: "2025",
+  },
   {
     name: "Ethereum Blockchain Developer Bootcamp With Solidity",
     issuer: "Udemy",
@@ -49,12 +52,12 @@ export default function Certifications() {
             <Card key={item.name}>
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
-                  <Award className="h-6 w-6 text-blue-600" />
+                  <Award size={20} className="text-blue-600 flex-none" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.name}</h3>
                     <p className="text-gray-700 dark:text-gray-300">{item.issuer}</p>
                     <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar size={16} className="flex-none" />
                       <span>{item.period}</span>
                     </div>
                   </div>

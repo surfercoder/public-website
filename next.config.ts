@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    qualities: [60, 75, 85, 100],
   },
   headers: async () => {
     return [
