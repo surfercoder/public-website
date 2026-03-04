@@ -18,7 +18,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Agustin Cassani | Full Stack JavaScript Developer",
-  description: "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 17+ years of experience in web and mobile development.",
+  description: "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
   metadataBase: new URL("https://agustincassani.com"),
   alternates: {
     canonical: "/",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Agustin Cassani | Full Stack JavaScript Developer",
     description:
-      "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 17+ years of experience in web and mobile development.",
+      "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
     url: "https://agustincassani.com",
     siteName: "Agustin Cassani",
     locale: "en_US",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Agustin Cassani | Full Stack JavaScript Developer",
     description:
-      "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 17+ years of experience in web and mobile development.",
+      "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
     images: [
       {
         url: "/profile-image.jpeg",
@@ -77,10 +77,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <SeoJsonLd />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       </head>
       <body className={inter.className}>
         <PerformanceMonitor />

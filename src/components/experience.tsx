@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { useState, useSyncExternalStore } from "react"
+import { LazyMotion, m, domAnimation } from "framer-motion"
 import { Briefcase, Calendar, ChevronDown, ChevronUp, ExternalLink } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -142,23 +143,38 @@ const EXPERIENCES: Experience[] = [
     },
   ]
 
+function subscribeToReducedMotion(callback: () => void) {
+  try {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    mq.addEventListener("change", callback)
+    return () => mq.removeEventListener("change", callback)
+  } catch {
+    return () => {}
+  }
+}
+
+function getReducedMotion() {
+  try {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  } catch {
+    return false
+  }
+}
+
+/* istanbul ignore next -- server snapshot for SSR */
+function getReducedMotionServer() {
+  return false
+}
+
 export default function Experience() {
   const [showAll, setShowAll] = useState(false)
-  const [reduced, setReduced] = useState(false)
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
-      try {
-        const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-        setReduced(!!mq.matches)
-      } catch {}
-    }
-  }, [])
+  const reduced = useSyncExternalStore(subscribeToReducedMotion, getReducedMotion, getReducedMotionServer)
 
   const experiences = EXPERIENCES
   const displayedExperiences = showAll ? experiences : experiences.slice(0, 4)
 
   return (
+    <LazyMotion features={domAnimation}>
     <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -171,7 +187,7 @@ export default function Experience() {
 
         <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
           {displayedExperiences.map((exp, index) => (
-            <motion.div
+            <m.div
               key={exp.id}
               initial={reduced ? undefined : { opacity: 0, y: 16 }}
               animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
@@ -203,8 +219,8 @@ export default function Experience() {
                       <AccordionTrigger className="text-sm font-medium">Key Achievements</AccordionTrigger>
                       <AccordionContent>
                         <ul className="list-disc pl-5 space-y-2 mt-2">
-                          {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="text-gray-700 dark:text-gray-300">
+                          {exp.achievements.map((achievement) => (
+                            <li key={achievement} className="text-gray-700 dark:text-gray-300">
                               {achievement}
                             </li>
                           ))}
@@ -214,7 +230,7 @@ export default function Experience() {
                   </Accordion>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
@@ -236,12 +252,13 @@ export default function Experience() {
 
         <div className="text-center mt-12">
           <Button asChild variant="outline">
-            <a href="/resume" className="flex items-center gap-2">
+            <Link href="/resume" className="flex items-center gap-2">
               View Full Resume <ExternalLink className="h-4 w-4" />
-            </a>
+            </Link>
           </Button>
         </div>
       </div>
     </section>
+    </LazyMotion>
   )
 }

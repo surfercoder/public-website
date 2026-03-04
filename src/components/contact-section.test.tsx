@@ -18,6 +18,16 @@ jest.mock('lucide-react', () => ({
   Instagram: () => <div data-testid="instagram-icon" />,
 }));
 
+// Mock obfuscated email components (they render as client-side assembled)
+jest.mock('@/components/obfuscated-email', () => ({
+  ObfuscatedEmailLink: ({ children, className, ariaLabel }: { children: React.ReactNode; className?: string; ariaLabel?: string }) => (
+    <a href="mailto:agustinscassani@gmail.com" className={className} aria-label={ariaLabel}>{children}</a>
+  ),
+  ObfuscatedEmailText: ({ className }: { className?: string }) => (
+    <span className={className}>agustinscassani@gmail.com</span>
+  ),
+}));
+
 describe('ContactSection', () => {
   it('renders the contact section with correct heading', () => {
     render(<ContactSection />);

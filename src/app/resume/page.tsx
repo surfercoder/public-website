@@ -6,7 +6,7 @@ import ResumeViewer from "@/components/resume-viewer"
 
 export const metadata: Metadata = {
   title: "Resume | Agustin Cassani",
-  description: "Professional resume of Agustin Cassani, Full Stack JavaScript Developer with 17+ years of experience.",
+  description: "Professional resume of Agustin Cassani, Full Stack JavaScript Developer with 18+ years of experience.",
 }
 
 export default function ResumePage() {
@@ -28,10 +28,10 @@ export default function ResumePage() {
             </Button>
 
             <Button asChild>
-              <a href="/AgustinCassaniCV.pdf" download className="flex items-center gap-2">
+              <Link href="/AgustinCassaniCV.pdf" download className="flex items-center gap-2">
                 <Download className="h-4 w-4" />
                 Download PDF
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

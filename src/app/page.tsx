@@ -10,7 +10,7 @@ import Footer from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "Agustin Cassani | Full Stack JavaScript Developer",
-  description: "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 17+ years of experience in web and mobile development.",
+  description: "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
 }
 
 export default function Home() {

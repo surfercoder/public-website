@@ -159,9 +159,14 @@ describe('Skills', () => {
     // Mock matchMedia to return valid media query
     window.matchMedia = jest.fn(() => ({
       matches: true,
+      media: '',
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
-    }));
+      dispatchEvent: jest.fn(),
+    })) as typeof window.matchMedia;
 
     render(<Skills />);
 

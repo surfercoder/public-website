@@ -3,9 +3,11 @@ import Hero from './hero';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
-  motion: {
+  LazyMotion: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  m: {
     div: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
   },
+  domAnimation: {},
 }));
 
 // Mock Next.js Link
@@ -32,7 +34,7 @@ describe('Hero', () => {
     expect(screen.getByText("Hello, I'm")).toBeInTheDocument();
     expect(screen.getByText('Agustin Cassani')).toBeInTheDocument();
     expect(screen.getByText('Full Stack JavaScript Developer & Technical Lead')).toBeInTheDocument();
-    expect(screen.getByText(/With 17\+ years of experience/)).toBeInTheDocument();
+    expect(screen.getByText(/With 18\+ years of experience/)).toBeInTheDocument();
   });
 
   it('renders call-to-action buttons', () => {
@@ -109,9 +111,14 @@ describe('Hero', () => {
     // Mock matchMedia to return valid media query
     window.matchMedia = jest.fn(() => ({
       matches: true,
+      media: '',
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
-    }));
+      dispatchEvent: jest.fn(),
+    })) as typeof window.matchMedia;
 
     render(<Hero />);
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { Document, Page, pdfjs } from 'react-pdf';
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -11,13 +11,23 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+function subscribeToResize(callback: () => void) {
+  window.addEventListener("resize", callback);
+  return () => window.removeEventListener("resize", callback);
+}
+
+function getPageWidth() {
+  return window.innerWidth > 700 ? 600 : window.innerWidth - 30;
+}
+
+/* istanbul ignore next -- server snapshot for SSR */
+function getPageWidthServer() {
+  return 800;
+}
+
 export default function PdfViewer() {
   const [numPages, setNumPages] = useState<number>(0);
-  const [pageWidth, setPageWidth] = useState<number>(800);
-  
-  useEffect(() => {
-    setPageWidth(window.innerWidth > 700 ? 600 : window.innerWidth - 30);
-  }, []);
+  const pageWidth = useSyncExternalStore(subscribeToResize, getPageWidth, getPageWidthServer);
   
   return (
     <div className="pdf-container">

@@ -23,6 +23,13 @@ jest.mock('lucide-react', () => ({
   Mail: () => <div data-testid="mail-icon" />,
 }));
 
+// Mock obfuscated email component
+jest.mock('@/components/obfuscated-email', () => ({
+  ObfuscatedEmailLink: ({ children, className, ariaLabel }: { children: React.ReactNode; className?: string; ariaLabel?: string }) => (
+    <a href="mailto:agustinscassani@gmail.com" className={className} aria-label={ariaLabel}>{children}</a>
+  ),
+}));
+
 describe('Footer', () => {
   beforeEach(() => {
     // Mock current year to be consistent in tests

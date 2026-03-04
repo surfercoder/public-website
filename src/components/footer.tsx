@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Github, Linkedin, Instagram, Mail } from "lucide-react"
+import { ObfuscatedEmailLink } from "@/components/obfuscated-email"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -13,7 +14,7 @@ export default function Footer() {
               Agustin Cassani
             </Link>
             <p className="mt-2 text-gray-400 max-w-md">
-              Full Stack JavaScript Developer & Technical Lead with 17+ years of experience architecting and delivering
+              Full Stack JavaScript Developer & Technical Lead with 18+ years of experience architecting and delivering
               modern web and mobile solutions.
             </p>
           </div>
@@ -47,13 +48,12 @@ export default function Footer() {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="mailto:agustinscassani@gmail.com"
+              <ObfuscatedEmailLink
                 className="text-gray-400 hover:text-white transition-colors"
-                aria-label="Email"
+                ariaLabel="Email"
               >
                 <Mail className="h-5 w-5" />
-              </a>
+              </ObfuscatedEmailLink>
             </div>
             <p className="text-gray-500 text-sm">© {currentYear} Agustin Cassani. All rights reserved.</p>
           </div>

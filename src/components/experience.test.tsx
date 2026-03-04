@@ -4,11 +4,13 @@ import Experience from './experience';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
-  motion: {
+  LazyMotion: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  m: {
     div: ({ children, ...props }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) => (
       <div {...props}>{children}</div>
     ),
   },
+  domAnimation: {},
 }));
 
 // Mock lucide-react icons
@@ -166,9 +168,14 @@ describe('Experience', () => {
     // Mock matchMedia to return valid media query
     window.matchMedia = jest.fn(() => ({
       matches: true,
+      media: '',
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
-    }));
+      dispatchEvent: jest.fn(),
+    })) as typeof window.matchMedia;
 
     render(<Experience />);
 

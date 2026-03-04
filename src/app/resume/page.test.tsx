@@ -105,7 +105,7 @@ describe('metadata', () => {
 
   it('has correct description', () => {
     expect(metadata.description).toBe(
-      'Professional resume of Agustin Cassani, Full Stack JavaScript Developer with 17+ years of experience.'
+      'Professional resume of Agustin Cassani, Full Stack JavaScript Developer with 18+ years of experience.'
     );
   });
 });

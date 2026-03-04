@@ -1,29 +1,39 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { useSyncExternalStore } from "react"
+import { LazyMotion, m, domAnimation } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Mail } from "lucide-react"
 import Link from "next/link"
 
-export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+function subscribeToReducedMotion(callback: () => void) {
+  try {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    mq.addEventListener("change", callback)
+    return () => mq.removeEventListener("change", callback)
+  } catch {
+    return () => {}
+  }
+}
 
-  useEffect(() => {
-    setIsVisible(true)
-    // Detect prefers-reduced-motion without relying on framer-motion hooks
-    if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
-      try {
-        const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-        setPrefersReducedMotion(!!mq.matches)
-      } catch {
-        // noop
-      }
-    }
-  }, [])
+function getReducedMotion() {
+  try {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  } catch {
+    return false
+  }
+}
+
+/* istanbul ignore next -- server snapshot for SSR */
+function getReducedMotionServer() {
+  return false
+}
+
+export default function Hero() {
+  const prefersReducedMotion = useSyncExternalStore(subscribeToReducedMotion, getReducedMotion, getReducedMotionServer)
 
   return (
+    <LazyMotion features={domAnimation}>
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 z-0" />
@@ -40,14 +50,14 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
-          <motion.div
+          <m.div
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
-            animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 16 }}
+            animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.1 }}
             className="mb-4"
           >
             <h2 className="text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400">Hello, I&apos;m</h2>
-          </motion.div>
+          </m.div>
 
           {/* Render the main headline immediately with no animation to optimize LCP */}
           <div className="mb-6">
@@ -56,9 +66,9 @@ export default function Hero() {
             </h1>
           </div>
 
-          <motion.div
+          <m.div
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
-            animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 16 }}
+            animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.3 }}
             className="mb-8"
           >
@@ -66,13 +76,13 @@ export default function Hero() {
               Full Stack JavaScript Developer & Technical Lead
             </h3>
             <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-              With 17+ years of experience architecting and delivering modern web and mobile solutions.
+              With 18+ years of experience architecting and delivering modern web and mobile solutions.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
-            animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 16 }}
+            animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
@@ -85,13 +95,13 @@ export default function Hero() {
             <Button asChild variant="outline" size="lg" className="text-md">
               <Link href="/resume">View My Resume</Link>
             </Button>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <motion.div
+        <m.div
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
           animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={prefersReducedMotion ? { duration: 0 } : {
@@ -104,8 +114,9 @@ export default function Hero() {
           aria-hidden="true"
         >
           <ArrowDown className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   )
 }

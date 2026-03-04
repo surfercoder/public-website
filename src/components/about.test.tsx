@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import About from './about';
 
@@ -8,7 +8,7 @@ jest.mock('next/image', () => {
   return function MockImage(
     { alt, src, fill, ...props }: PropsWithChildren<ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean; src: string; alt: string }>,
   ) {
-    return <img alt={alt} src={src} data-fill={fill} {...props} />;
+    return React.createElement('img', { alt, src, 'data-fill': fill, ...props });
   };
 });
 
@@ -41,7 +41,7 @@ describe('About', () => {
     render(<About />);
 
     expect(screen.getByText(/Dynamic Full Stack JavaScript Developer and Technical Lead/)).toBeInTheDocument();
-    expect(screen.getByText(/With 17\+ years of experience/)).toBeInTheDocument();
+    expect(screen.getByText(/With 18\+ years of experience/)).toBeInTheDocument();
     expect(screen.getByText(/I combine technical excellence with strategic vision/)).toBeInTheDocument();
   });
 
@@ -49,7 +49,7 @@ describe('About', () => {
     render(<About />);
 
     expect(screen.getByText('Mendoza, Argentina')).toBeInTheDocument();
-    expect(screen.getByText('17+ Years Experience')).toBeInTheDocument();
+    expect(screen.getByText('18+ Years Experience')).toBeInTheDocument();
     expect(screen.getByText('Master of Computer Science')).toBeInTheDocument();
     expect(screen.getByText('Available for Projects')).toBeInTheDocument();
     expect(screen.getByText('Remote (Americas/EMEA)')).toBeInTheDocument();

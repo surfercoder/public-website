@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
-import Navbar from './navbar';
+import Navbar, { getScrolledServer } from './navbar';
 
 // Mock Next.js Link
 jest.mock('next/link', () => {
@@ -492,7 +492,7 @@ describe('Navbar', () => {
 
   it('handles null/undefined pathname edge case', () => {
     // Test the pathname ?? "/" branch
-    usePathnameMock.mockReturnValue(null);
+    usePathnameMock.mockReturnValue(null as unknown as string);
     render(<Navbar />);
 
     // Should default to Home when pathname is null, but may not show indicator initially
@@ -717,7 +717,7 @@ describe('Navbar', () => {
 
   it('covers undefined pathname with fallback to home section', () => {
     // Test undefined pathname (different from null)
-    usePathnameMock.mockReturnValue(undefined);
+    usePathnameMock.mockReturnValue(undefined as unknown as string);
     render(<Navbar />);
 
     // Should render home
@@ -991,6 +991,42 @@ describe('Navbar', () => {
     } finally {
       (global as any).window = originalWindow;
     }
+  });
+
+  it('disconnects existing observers when effect re-runs on home route', () => {
+    // Access the unwrapped Navbar to bypass React.memo (which blocks re-renders when props don't change)
+    const RawNavbar = (Navbar as any).type ?? Navbar;
+
+    usePathnameMock.mockReturnValue('/');
+    const { rerender } = render(<RawNavbar />);
+
+    // Observers were created on the initial "/" render
+    const initialInstances = [...ioInstances];
+    expect(initialInstances.length).toBeGreaterThan(0);
+
+    // Switch away from "/" — cleanup runs but observerRefs.current keeps references
+    act(() => {
+      usePathnameMock.mockReturnValue('/resume');
+      rerender(<RawNavbar />);
+    });
+
+    // Reset disconnect mocks so we can specifically detect calls from line 55
+    initialInstances.forEach((inst) => inst.disconnect.mockClear());
+
+    // Switch back to "/" — effect re-runs, line 55 iterates existing observers
+    act(() => {
+      usePathnameMock.mockReturnValue('/');
+      rerender(<RawNavbar />);
+    });
+
+    // The initial observers should have been disconnected by the for-of loop on line 55
+    initialInstances.forEach((inst) => {
+      expect(inst.disconnect).toHaveBeenCalled();
+    });
+  });
+
+  it('covers getScrolledServer (SSR snapshot for useSyncExternalStore)', () => {
+    expect(getScrolledServer()).toBe(false);
   });
 
   it('covers window undefined branch explicitly in useEffect', () => {

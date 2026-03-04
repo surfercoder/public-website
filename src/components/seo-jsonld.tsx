@@ -2,10 +2,9 @@ import React from "react"
 
 function JsonLd({ data }: { data: unknown }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
+    <script type="application/ld+json">
+      {JSON.stringify(data)}
+    </script>
   )
 }
 
@@ -27,7 +26,6 @@ export default function SeoJsonLd() {
       addressLocality: "Mendoza",
       addressCountry: "AR",
     },
-    email: "mailto:agustinscassani@gmail.com",
     telephone: "+54 9 (261) 688-6005",
   }
 

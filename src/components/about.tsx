@@ -21,7 +21,7 @@ export default function About() {
             </h3>
 
             <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              With 17+ years of experience architecting and delivering modern web and mobile solutions. I&apos;m an expert in
+              With 18+ years of experience architecting and delivering modern web and mobile solutions. I&apos;m an expert in
               React, React Native, Next.js, Node.js, and TypeScript with proven success leading remote development
               teams.
             </p>
@@ -43,7 +43,7 @@ export default function About() {
               <Card>
                 <CardContent className="p-4 flex items-center gap-3">
                   <Briefcase className="h-5 w-5 text-blue-600" />
-                  <span className="text-gray-700 dark:text-gray-300">17+ Years Experience</span>
+                  <span className="text-gray-700 dark:text-gray-300">18+ Years Experience</span>
                 </CardContent>
               </Card>
 

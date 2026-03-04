@@ -11,14 +11,14 @@ export default function PerformanceMonitor() {
     // Performance monitoring (disabled logs)
     if (typeof window !== 'undefined' && 'performance' in window && 'PerformanceObserver' in window) {
       try {
-        const observer = new PerformanceObserver(() => { /* no-op */ });
+        const observer = new PerformanceObserver(/* istanbul ignore next */ () => { /* no-op */ });
         observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
       } catch {
         /* no-op */
       }
 
       // Attach listener without logging to avoid console noise
-      window.addEventListener('load', () => {
+      window.addEventListener('load', /* istanbul ignore next */ () => {
         /* no-op */
       });
     }
