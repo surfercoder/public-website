@@ -36,12 +36,8 @@ export function ObfuscatedEmailLink({
 }) {
   const email = useSyncExternalStore(emptySubscribe, getEmail, getEmailServer)
 
-  if (!email) {
-    return <span className={className}>{children}</span>
-  }
-
   return (
-    <a href={`mailto:${email}`} className={className} aria-label={ariaLabel}>
+    <a href={email ? `mailto:${email}` : undefined} className={className} aria-label={ariaLabel}>
       {children}
     </a>
   )

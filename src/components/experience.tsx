@@ -20,6 +20,23 @@ interface Experience {
 
 const EXPERIENCES: Experience[] = [
     {
+      id: "imi-health",
+      company: "IMI Health",
+      position: "Co-Founder & CTO",
+      period: "MARCH 2025 - PRESENT",
+      location: "Remote",
+      type: "Co-Founder",
+      achievements: [
+        "Architected and delivered an end-to-end AI-powered SaaS platform from zero to production (MVP launched April 2026), enabling physicians to generate structured medical reports via real-time voice transcription and ambient AI",
+        "Engineered full-stack platform using Next.js, TypeScript, Supabase, and Tailwind CSS / shadcn/ui, establishing a scalable foundation designed to support rapid user growth",
+        "Integrated AssemblyAI for real-time and post-consultation voice transcription, reducing physician documentation time by eliminating manual data entry across both dictation and live ambient recording modes",
+        "Implemented Anthropic Claude API for intelligent medical report generation, producing dual-format outputs: a structured clinical document for the physician and a plain-language summary for the patient",
+        "Built automated multi-channel delivery system using Resend / Nodemailer (email) and WhatsApp Business API, enabling one-click report dispatch to doctors and patients",
+        "Designed digital patient consent workflow embedded directly into the report pipeline, ensuring legal compliance and audit-ready documentation on every consultation",
+        "Leading upcoming React Native / Expo mobile application to extend platform capabilities to iOS and Android, targeting ambient AI recording for live consultations",
+      ],
+    },
+    {
       id: "utn",
       company: "Universidad Tecnológica Nacional",
       position: "Professor (Contract)",
@@ -200,8 +217,8 @@ export default function Experience() {
                       <CardTitle className="text-xl font-bold">{exp.position}</CardTitle>
                       <CardDescription className="text-lg font-medium mt-1">{exp.company}</CardDescription>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{exp.type}</span>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full">{exp.type}</span>
                     </div>
                   </div>
                 </CardHeader>

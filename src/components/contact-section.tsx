@@ -1,6 +1,7 @@
 import React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Linkedin, Github, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
+import { Linkedin, Github, Instagram } from "@/components/brand-icons"
 import ContactForm from "@/components/contact-form"
 import { ObfuscatedEmailLink, ObfuscatedEmailText } from "@/components/obfuscated-email"
 
@@ -56,7 +57,6 @@ function ContactSection() {
             <div className="space-y-6 mb-8" style={{ marginTop: "20px" }}>
               <ObfuscatedEmailLink
                 className="flex items-start gap-4 group"
-                ariaLabel="Email"
               >
                 <div className="p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
                   <Mail className="h-5 w-5 text-blue-600" />

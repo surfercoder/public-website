@@ -9,6 +9,11 @@ interface CertificationItem {
 
 const certifications: CertificationItem[] = [
   {
+    name: "Building with the Claude API",
+    issuer: "Anthropic",
+    period: "2026",
+  },
+  {
     name: "Claude Code in Action",
     issuer: "Anthropic",
     period: "2026",

@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import Link from 'next/link';
 import { Button, buttonVariants } from './button';
 
 // Mock Radix UI Slot
@@ -46,7 +47,7 @@ describe('Button', () => {
   it('renders as child component when asChild is true', () => {
     render(
       <Button asChild>
-        <a href="/test">Link Button</a>
+        <Link href="/test">Link Button</Link>
       </Button>
     );
 

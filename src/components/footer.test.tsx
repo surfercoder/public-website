@@ -17,10 +17,14 @@ jest.mock('next/link', () => {
 
 // Mock lucide-react icons
 jest.mock('lucide-react', () => ({
+  Mail: () => <div data-testid="mail-icon" />,
+}));
+
+// Mock brand icons
+jest.mock('@/components/brand-icons', () => ({
   Github: () => <div data-testid="github-icon" />,
   Linkedin: () => <div data-testid="linkedin-icon" />,
   Instagram: () => <div data-testid="instagram-icon" />,
-  Mail: () => <div data-testid="mail-icon" />,
 }));
 
 // Mock obfuscated email component

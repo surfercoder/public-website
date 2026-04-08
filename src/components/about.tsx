@@ -17,13 +17,14 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6" style={{ marginBottom: "20px" }}>
-              Dynamic Full Stack JavaScript Developer and Technical Lead
+              Full Stack JavaScript Developer, Technical Lead & Co-Founder
             </h3>
 
             <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              With 18+ years of experience architecting and delivering modern web and mobile solutions. I&apos;m an expert in
-              React, React Native, Next.js, Node.js, and TypeScript with proven success leading remote development
-              teams.
+              With 18+ years of experience architecting and delivering modern web, mobile, and AI-powered SaaS
+              solutions. I&apos;m an expert in React, React Native, Next.js, Node.js, and TypeScript with a proven
+              track record leading remote development teams and integrating cutting-edge AI APIs to ship
+              production-grade products from zero to launch.
             </p>
 
             <p className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">

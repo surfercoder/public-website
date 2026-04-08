@@ -40,7 +40,7 @@ describe('About', () => {
   it('displays main description text', () => {
     render(<About />);
 
-    expect(screen.getByText(/Dynamic Full Stack JavaScript Developer and Technical Lead/)).toBeInTheDocument();
+    expect(screen.getByText(/Full Stack JavaScript Developer, Technical Lead & Co-Founder/)).toBeInTheDocument();
     expect(screen.getByText(/With 18\+ years of experience/)).toBeInTheDocument();
     expect(screen.getByText(/I combine technical excellence with strategic vision/)).toBeInTheDocument();
   });
