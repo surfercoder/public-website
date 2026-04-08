@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef, useMemo, useCallback, useSyncExternalStore } from "react"
 import Link from "next/link"
-import { Menu, X, Download, Github, Linkedin, Instagram } from "lucide-react"
+import { Menu, X, Download } from "lucide-react"
+import { Github, Linkedin, Instagram } from "@/components/brand-icons"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/theme-toggle"
@@ -32,14 +33,14 @@ function Navbar() {
     return getInitialSection(
       pathname ?? "/",
       window.location.hash,
-      ["home", "about", "experience", "skills", "contact"]
+      ["home", "about", "experience", "projects", "skills", "contact"]
     )
   })
   const [prevPathname, setPrevPathname] = useState(pathname)
   const observerRefs = useRef<IntersectionObserver[]>([])
 
   // Define sections to observe
-  const sections = useMemo(() => ["home", "about", "experience", "skills", "contact"], [])
+  const sections = useMemo(() => ["home", "about", "experience", "projects", "skills", "contact"], [])
 
   // Sync active section when pathname changes (React-recommended pattern for adjusting state from props)
   // istanbul ignore next -- React re-renders immediately, coverage tool cannot track this execution
@@ -91,6 +92,7 @@ function Navbar() {
     { name: "Home", href: "/#home", section: "home" },
     { name: "About", href: "/#about", section: "about" },
     { name: "Experience", href: "/#experience", section: "experience" },
+    { name: "Projects", href: "/#projects", section: "projects" },
     { name: "Skills", href: "/#skills", section: "skills" },
     { name: "Contact", href: "/#contact", section: "contact" },
     { name: "Resume", href: "/resume", section: "resume" },

@@ -25,6 +25,10 @@ jest.mock('lucide-react', () => ({
   Menu: () => <div data-testid="menu-icon" />,
   X: () => <div data-testid="x-icon" />,
   Download: () => <div data-testid="download-icon" />,
+}));
+
+// Mock brand icons
+jest.mock('@/components/brand-icons', () => ({
   Github: () => <div data-testid="github-icon" />,
   Linkedin: () => <div data-testid="linkedin-icon" />,
   Instagram: () => <div data-testid="instagram-icon" />,
@@ -67,7 +71,7 @@ describe('Navbar', () => {
     ioCallbacks.length = 0;
     ioInstances.length = 0;
     // Ensure DOM has sections so observers are created
-    const ids = ['home', 'about', 'experience', 'skills', 'contact'];
+    const ids = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
     ids.forEach((id) => {
       if (!document.getElementById(id)) {
         const el = document.createElement('section');
@@ -348,7 +352,7 @@ describe('Navbar', () => {
 
     // We created observers, but not necessarily for all 5 sections
     expect(ioInstances.length).toBeGreaterThan(0);
-    expect(ioInstances.length).toBeLessThanOrEqual(5);
+    expect(ioInstances.length).toBeLessThanOrEqual(6);
   });
 
   it('renders correct href attributes for navigation links', () => {
@@ -357,6 +361,7 @@ describe('Navbar', () => {
     expect(screen.getAllByRole('link', { name: 'Home' })[0]).toHaveAttribute('href', '/#home');
     expect(screen.getAllByRole('link', { name: 'About' })[0]).toHaveAttribute('href', '/#about');
     expect(screen.getAllByRole('link', { name: 'Experience' })[0]).toHaveAttribute('href', '/#experience');
+    expect(screen.getAllByRole('link', { name: 'Projects' })[0]).toHaveAttribute('href', '/#projects');
     expect(screen.getAllByRole('link', { name: 'Skills' })[0]).toHaveAttribute('href', '/#skills');
     expect(screen.getAllByRole('link', { name: 'Contact' })[0]).toHaveAttribute('href', '/#contact');
     expect(screen.getAllByRole('link', { name: 'Resume' })[0]).toHaveAttribute('href', '/resume');
@@ -539,7 +544,7 @@ describe('Navbar', () => {
 
   it('tests the home section fallback query selector', () => {
     // Remove all section elements to test the null return path
-    ['home', 'about', 'experience', 'skills', 'contact'].forEach((id) => {
+    ['home', 'about', 'experience', 'projects', 'skills', 'contact'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.remove();
     });
@@ -563,7 +568,7 @@ describe('Navbar', () => {
 
     // Should still create some observers but not for the missing section
     expect(ioInstances.length).toBeGreaterThan(0);
-    expect(ioInstances.length).toBeLessThan(5);
+    expect(ioInstances.length).toBeLessThan(6);
   });
 
   it('ensures mobile menu shows and hides correctly', () => {

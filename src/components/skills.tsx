@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Code, Database, Layout, Server, Terminal, TestTube, Cloud, Blocks } from "lucide-react"
+import { Code, Database, Layout, Server, Terminal, TestTube, Cloud, Blocks, Sparkles } from "lucide-react"
 
 interface SkillCategory {
   title: string
@@ -10,19 +10,29 @@ interface SkillCategory {
 
 const SKILL_CATEGORIES: SkillCategory[] = [
     {
-      title: "Frontend Development",
-      icon: <Layout className="h-6 w-6 text-blue-600" />,
-      skills: ["React", "React Native", "Next.js", "Redux", "Apollo Client", "TypeScript", "JavaScript"],
+      title: "AI & Integrations",
+      icon: <Sparkles className="h-6 w-6 text-blue-600" />,
+      skills: [
+        "Anthropic Claude API",
+        "AssemblyAI",
+        "AI-assisted Code Generation",
+        "Prompt Engineering",
+      ],
     },
     {
-      title: "Backend Development",
+      title: "Frontend & Mobile",
+      icon: <Layout className="h-6 w-6 text-blue-600" />,
+      skills: ["React", "React Native", "Expo", "Next.js", "TypeScript", "JavaScript", "Redux", "Apollo Client"],
+    },
+    {
+      title: "Backend & APIs",
       icon: <Server className="h-6 w-6 text-blue-600" />,
-      skills: ["Node.js", "Express", "Apollo Server", "Microservices Architecture", "RESTful APIs"],
+      skills: ["Node.js", "Express", "Apollo Server", "GraphQL", "REST APIs", "Microservices Architecture"],
     },
     {
       title: "Databases & Query Languages",
       icon: <Database className="h-6 w-6 text-blue-600" />,
-      skills: ["MongoDB", "PostgreSQL", "SQL", "Neo4j", "GraphQL"],
+      skills: ["Supabase", "PostgreSQL", "MongoDB", "SQL", "Neo4j", "GraphQL"],
     },
     {
       title: "UI Frameworks & Design Systems",

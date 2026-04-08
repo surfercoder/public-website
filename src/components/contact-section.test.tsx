@@ -13,6 +13,10 @@ jest.mock('lucide-react', () => ({
   Mail: () => <div data-testid="mail-icon" />,
   Phone: () => <div data-testid="phone-icon" />,
   MapPin: () => <div data-testid="map-pin-icon" />,
+}));
+
+// Mock brand icons
+jest.mock('@/components/brand-icons', () => ({
   Linkedin: () => <div data-testid="linkedin-icon" />,
   Github: () => <div data-testid="github-icon" />,
   Instagram: () => <div data-testid="instagram-icon" />,

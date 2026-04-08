@@ -20,6 +20,12 @@ jest.mock('@/components/experience', () => {
   };
 });
 
+jest.mock('@/components/projects', () => {
+  return function MockProjects() {
+    return <div data-testid="projects" />;
+  };
+});
+
 jest.mock('@/components/skills', () => {
   return function MockSkills() {
     return <div data-testid="skills" />;
@@ -57,6 +63,7 @@ describe('Home', () => {
     expect(getByTestId('hero')).toBeInTheDocument();
     expect(getByTestId('about')).toBeInTheDocument();
     expect(getByTestId('experience')).toBeInTheDocument();
+    expect(getByTestId('projects')).toBeInTheDocument();
     expect(getByTestId('skills')).toBeInTheDocument();
     expect(getByTestId('education')).toBeInTheDocument();
     expect(getByTestId('certifications')).toBeInTheDocument();
@@ -79,11 +86,12 @@ describe('Home', () => {
     expect(children?.[0]).toHaveAttribute('data-testid', 'hero');
     expect(children?.[1]).toHaveAttribute('data-testid', 'about');
     expect(children?.[2]).toHaveAttribute('data-testid', 'experience');
-    expect(children?.[3]).toHaveAttribute('data-testid', 'skills');
-    expect(children?.[4]).toHaveAttribute('data-testid', 'education');
-    expect(children?.[5]).toHaveAttribute('data-testid', 'certifications');
-    expect(children?.[6]).toHaveAttribute('data-testid', 'contact-section');
-    expect(children?.[7]).toHaveAttribute('data-testid', 'footer');
+    expect(children?.[3]).toHaveAttribute('data-testid', 'projects');
+    expect(children?.[4]).toHaveAttribute('data-testid', 'skills');
+    expect(children?.[5]).toHaveAttribute('data-testid', 'education');
+    expect(children?.[6]).toHaveAttribute('data-testid', 'certifications');
+    expect(children?.[7]).toHaveAttribute('data-testid', 'contact-section');
+    expect(children?.[8]).toHaveAttribute('data-testid', 'footer');
   });
 });
 

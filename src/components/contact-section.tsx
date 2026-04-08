@@ -1,6 +1,7 @@
 import React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Linkedin, Github, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
+import { Linkedin, Github, Instagram } from "@/components/brand-icons"
 import ContactForm from "@/components/contact-form"
 import { ObfuscatedEmailLink, ObfuscatedEmailText } from "@/components/obfuscated-email"
 

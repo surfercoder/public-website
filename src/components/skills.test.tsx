@@ -18,6 +18,7 @@ jest.mock('lucide-react', () => ({
   TestTube: () => <div data-testid="test-tube-icon" />,
   Cloud: () => <div data-testid="cloud-icon" />,
   Blocks: () => <div data-testid="blocks-icon" />,
+  Sparkles: () => <div data-testid="sparkles-icon" />,
 }));
 
 describe('Skills', () => {
@@ -31,8 +32,9 @@ describe('Skills', () => {
   it('renders all skill categories', () => {
     render(<Skills />);
 
-    expect(screen.getByText('Frontend Development')).toBeInTheDocument();
-    expect(screen.getByText('Backend Development')).toBeInTheDocument();
+    expect(screen.getByText('AI & Integrations')).toBeInTheDocument();
+    expect(screen.getByText('Frontend & Mobile')).toBeInTheDocument();
+    expect(screen.getByText('Backend & APIs')).toBeInTheDocument();
     expect(screen.getByText('Databases & Query Languages')).toBeInTheDocument();
     expect(screen.getByText('UI Frameworks & Design Systems')).toBeInTheDocument();
     expect(screen.getByText('Testing & Quality Assurance')).toBeInTheDocument();
@@ -65,7 +67,7 @@ describe('Skills', () => {
 
     expect(screen.getByText('MongoDB')).toBeInTheDocument();
     expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
-    expect(screen.getByText('GraphQL')).toBeInTheDocument();
+    expect(screen.getAllByText('GraphQL').length).toBeGreaterThan(0);
   });
 
   it('renders testing skills', () => {
@@ -104,6 +106,7 @@ describe('Skills', () => {
     expect(screen.getByTestId('cloud-icon')).toBeInTheDocument(); // DevOps
     expect(screen.getByTestId('blocks-icon')).toBeInTheDocument(); // Blockchain
     expect(screen.getByTestId('terminal-icon')).toBeInTheDocument(); // Development Tools
+    expect(screen.getByTestId('sparkles-icon')).toBeInTheDocument(); // AI & Integrations
   });
 
   it('has correct section id for navigation', () => {
@@ -124,7 +127,7 @@ describe('Skills', () => {
     render(<Skills />);
 
     // Check for skills categories being rendered
-    const skillsContainer = screen.getByText('Frontend Development').closest('div');
+    const skillsContainer = screen.getByText('Frontend & Mobile').closest('div');
     expect(skillsContainer).toBeInTheDocument();
   });
 

@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Github, Linkedin, Instagram, Mail } from "lucide-react"
+import { Mail } from "lucide-react"
+import { Github, Linkedin, Instagram } from "@/components/brand-icons"
 import { ObfuscatedEmailLink } from "@/components/obfuscated-email"
 
 export default function Footer() {
