@@ -53,7 +53,7 @@ function ProjectsInner() {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Visit ${project.name} live site`}
+              aria-labelledby={`project-name-${project.id}`}
               className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg"
             >
               <Card className="h-full overflow-hidden transition-shadow duration-300 group-hover:shadow-xl pt-0">
@@ -68,7 +68,7 @@ function ProjectsInner() {
                 </div>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{project.name}</h3>
+                    <h3 id={`project-name-${project.id}`} className="text-xl font-bold text-gray-900 dark:text-white">{project.name}</h3>
                     <ExternalLink className="h-4 w-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>

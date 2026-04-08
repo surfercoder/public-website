@@ -56,7 +56,7 @@ export default function Hero() {
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.1 }}
             className="mb-4"
           >
-            <h2 className="text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400">Hello, I&apos;m</h2>
+            <p className="text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400">Hello, I&apos;m</p>
           </m.div>
 
           {/* Render the main headline immediately with no animation to optimize LCP */}
@@ -72,9 +72,9 @@ export default function Hero() {
             transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.3 }}
             className="mb-8"
           >
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-700 dark:text-gray-300">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-700 dark:text-gray-300">
               Full Stack JavaScript Developer & Technical Lead
-            </h3>
+            </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
               With 18+ years of experience architecting and delivering modern web and mobile solutions.
             </p>

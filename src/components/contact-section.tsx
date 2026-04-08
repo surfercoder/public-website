@@ -57,7 +57,6 @@ function ContactSection() {
             <div className="space-y-6 mb-8" style={{ marginTop: "20px" }}>
               <ObfuscatedEmailLink
                 className="flex items-start gap-4 group"
-                ariaLabel="Email"
               >
                 <div className="p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
                   <Mail className="h-5 w-5 text-blue-600" />

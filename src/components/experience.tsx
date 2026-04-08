@@ -217,8 +217,8 @@ export default function Experience() {
                       <CardTitle className="text-xl font-bold">{exp.position}</CardTitle>
                       <CardDescription className="text-lg font-medium mt-1">{exp.company}</CardDescription>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{exp.type}</span>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full">{exp.type}</span>
                     </div>
                   </div>
                 </CardHeader>

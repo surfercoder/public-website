@@ -75,12 +75,12 @@ describe('Projects', () => {
   it('renders links with correct urls, target and rel attributes', () => {
     render(<Projects />);
 
-    const imiLink = screen.getByLabelText('Visit IMI Health live site');
+    const imiLink = screen.getByRole('link', { name: 'IMI Health' });
     expect(imiLink).toHaveAttribute('href', 'https://www.imihealth.ai/');
     expect(imiLink).toHaveAttribute('target', '_blank');
     expect(imiLink).toHaveAttribute('rel', 'noopener noreferrer');
 
-    const puntosLink = screen.getByLabelText('Visit Puntos Club live site');
+    const puntosLink = screen.getByRole('link', { name: 'Puntos Club' });
     expect(puntosLink).toHaveAttribute('href', 'https://puntosclub.ar/');
     expect(puntosLink).toHaveAttribute('target', '_blank');
     expect(puntosLink).toHaveAttribute('rel', 'noopener noreferrer');

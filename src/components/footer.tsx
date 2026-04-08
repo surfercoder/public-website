@@ -56,7 +56,7 @@ export default function Footer() {
                 <Mail className="h-5 w-5" />
               </ObfuscatedEmailLink>
             </div>
-            <p className="text-gray-500 text-sm">© {currentYear} Agustin Cassani. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© {currentYear} Agustin Cassani. All rights reserved.</p>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ describe('ObfuscatedEmailLink', () => {
     expect(link).toHaveClass('my-class');
   });
 
-  it('renders a span (no email) during SSR', () => {
+  it('renders an anchor without href during SSR (no hydration mismatch)', () => {
     const html = renderToString(
       <ObfuscatedEmailLink className="ssr-class" ariaLabel="Email">
         Click
@@ -36,7 +36,7 @@ describe('ObfuscatedEmailLink', () => {
     expect(html).not.toContain('agustinscassani');
     expect(html).not.toContain('mailto:');
     expect(html).toContain('Click');
-    expect(html).toContain('<span');
+    expect(html).toContain('<a');
   });
 });
 
