@@ -48,7 +48,7 @@ describe('Footer', () => {
     render(<Footer />);
 
     expect(screen.getByText('Agustin Cassani')).toBeInTheDocument();
-    expect(screen.getByText(/Full Stack JavaScript Developer & Technical Lead/)).toBeInTheDocument();
+    expect(screen.getByText(/Senior Software Engineer & Technical Leader/)).toBeInTheDocument();
     expect(screen.getByText('© 2024 Agustin Cassani. All rights reserved.')).toBeInTheDocument();
   });
 

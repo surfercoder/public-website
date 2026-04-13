@@ -15,7 +15,7 @@ export default function SeoJsonLd() {
     name: "Agustin Cassani",
     url: "https://agustincassani.com",
     image: "https://agustincassani.com/profile-image.jpeg",
-    jobTitle: "Full Stack JavaScript Developer & Technical Lead",
+    jobTitle: "Senior Software Engineer & Technical Leader",
     sameAs: [
       "https://www.linkedin.com/in/agustincassani/",
       "https://github.com/surfercoder/",

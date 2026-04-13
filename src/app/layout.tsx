@@ -17,8 +17,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Agustin Cassani | Full Stack JavaScript Developer",
-  description: "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
+  title: "Agustin Cassani | Senior Software Engineer & Technical Leader",
+  description: "Professional portfolio of Agustin Cassani, a Senior Software Engineer & Technical Leader with 18+ years of experience in web, mobile, and AI-powered solutions.",
   metadataBase: new URL("https://agustincassani.com"),
   alternates: {
     canonical: "/",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Agustin Cassani | Full Stack JavaScript Developer",
+    title: "Agustin Cassani | Senior Software Engineer & Technical Leader",
     description:
-      "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
+      "Professional portfolio of Agustin Cassani, a Senior Software Engineer & Technical Leader with 18+ years of experience in web, mobile, and AI-powered solutions.",
     url: "https://agustincassani.com",
     siteName: "Agustin Cassani",
     locale: "en_US",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agustin Cassani | Full Stack JavaScript Developer",
+    title: "Agustin Cassani | Senior Software Engineer & Technical Leader",
     description:
-      "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
+      "Professional portfolio of Agustin Cassani, a Senior Software Engineer & Technical Leader with 18+ years of experience in web, mobile, and AI-powered solutions.",
     images: [
       {
         url: "/profile-image.jpeg",

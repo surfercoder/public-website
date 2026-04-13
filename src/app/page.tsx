@@ -10,8 +10,8 @@ import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Agustin Cassani | Full Stack JavaScript Developer",
-  description: "Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.",
+  title: "Agustin Cassani | Senior Software Engineer & Technical Leader",
+  description: "Professional portfolio of Agustin Cassani, a Senior Software Engineer & Technical Leader with 18+ years of experience in web, mobile, and AI-powered solutions.",
 }
 
 export default function Home() {

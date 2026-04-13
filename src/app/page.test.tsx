@@ -97,12 +97,12 @@ describe('Home', () => {
 
 describe('metadata', () => {
   it('has correct title', () => {
-    expect(metadata.title).toBe('Agustin Cassani | Full Stack JavaScript Developer');
+    expect(metadata.title).toBe('Agustin Cassani | Senior Software Engineer & Technical Leader');
   });
 
   it('has correct description', () => {
     expect(metadata.description).toBe(
-      'Professional portfolio of Agustin Cassani, a Full Stack JavaScript Developer with 18+ years of experience in web and mobile development.'
+      'Professional portfolio of Agustin Cassani, a Senior Software Engineer & Technical Leader with 18+ years of experience in web, mobile, and AI-powered solutions.'
     );
   });
 });

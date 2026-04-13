@@ -33,7 +33,7 @@ describe('Hero', () => {
 
     expect(screen.getByText("Hello, I'm")).toBeInTheDocument();
     expect(screen.getByText('Agustin Cassani')).toBeInTheDocument();
-    expect(screen.getByText('Full Stack JavaScript Developer & Technical Lead')).toBeInTheDocument();
+    expect(screen.getByText('Senior Software Engineer & Technical Leader')).toBeInTheDocument();
     expect(screen.getByText(/With 18\+ years of experience/)).toBeInTheDocument();
   });
 
