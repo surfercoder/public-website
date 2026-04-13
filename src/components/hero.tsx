@@ -73,7 +73,7 @@ export default function Hero() {
             className="mb-8"
           >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-              Full Stack JavaScript Developer & Technical Lead
+              Senior Software Engineer & Technical Leader
             </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
               With 18+ years of experience architecting and delivering modern web and mobile solutions.

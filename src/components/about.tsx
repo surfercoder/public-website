@@ -17,7 +17,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6" style={{ marginBottom: "20px" }}>
-              Full Stack JavaScript Developer, Technical Lead & Co-Founder
+              Senior Software Engineer & Technical Leader
             </h3>
 
             <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">

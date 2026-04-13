@@ -15,8 +15,8 @@ export default function Footer() {
               Agustin Cassani
             </Link>
             <p className="mt-2 text-gray-400 max-w-md">
-              Full Stack JavaScript Developer & Technical Lead with 18+ years of experience architecting and delivering
-              modern web and mobile solutions.
+              Senior Software Engineer & Technical Leader with 18+ years of experience architecting and delivering
+              modern web, mobile, and AI-powered solutions.
             </p>
           </div>
 

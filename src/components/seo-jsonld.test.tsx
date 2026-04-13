@@ -35,7 +35,7 @@ describe('SeoJsonLd', () => {
     const person = JSON.parse(scripts[0].textContent!);
 
     expect(person.url).toBe('https://agustincassani.com');
-    expect(person.jobTitle).toBe('Full Stack JavaScript Developer & Technical Lead');
+    expect(person.jobTitle).toBe('Senior Software Engineer & Technical Leader');
     expect(person.telephone).toBe('+54 9 (261) 688-6005');
     expect(person.sameAs).toEqual(expect.arrayContaining([
       'https://www.linkedin.com/in/agustincassani/',
