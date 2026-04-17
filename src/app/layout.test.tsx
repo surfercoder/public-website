@@ -39,6 +39,10 @@ jest.mock('@vercel/speed-insights/next', () => ({
   SpeedInsights: () => null,
 }));
 
+jest.mock('@vercel/analytics/next', () => ({
+  Analytics: () => null,
+}));
+
 describe('RootLayout', () => {
   const originalConsoleError = console.error;
   beforeAll(() => {
