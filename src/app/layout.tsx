@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/sonner"
 import Navbar from "@/components/navbar"
 import SeoJsonLd from "@/components/seo-jsonld"
 import PerformanceMonitor from "@/components/performance-monitor"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -19,6 +20,23 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Agustin Cassani | Senior Software Engineer & Technical Leader",
   description: "Professional portfolio of Agustin Cassani, a Senior Software Engineer & Technical Leader with 18+ years of experience in web, mobile, and AI-powered solutions.",
+  keywords: [
+    "senior software engineer",
+    "software engineer",
+    "full-stack developer",
+    "technical leader",
+    "software architect",
+    "React developer",
+    "Next.js developer",
+    "Node.js engineer",
+    "TypeScript developer",
+    "React Native developer",
+    "remote software engineer",
+    "web developer",
+    "mobile developer",
+    "AI solutions engineer",
+    "Agustin Cassani",
+  ],
   metadataBase: new URL("https://agustincassani.com"),
   alternates: {
     canonical: "/",
@@ -54,6 +72,10 @@ export const metadata: Metadata = {
       },
     ],
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Agustin Cassani | Senior Software Engineer & Technical Leader",
@@ -85,6 +107,7 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )

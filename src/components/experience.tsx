@@ -193,7 +193,7 @@ export default function Experience() {
               animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
               transition={reduced ? { duration: 0 } : { duration: 0.3, delay: index * 0.08 }}
             >
-              <Card className="border-l-4 border-l-blue-600">
+              <Card className="border-b-2 border-b-blue-600">
                 <CardHeader className="pb-2">
                   <div className="flex justify-between items-start">
                     <div>

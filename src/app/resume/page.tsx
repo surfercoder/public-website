@@ -7,6 +7,15 @@ import ResumeViewer from "@/components/resume-viewer"
 export const metadata: Metadata = {
   title: "Resume | Agustin Cassani",
   description: "Professional resume of Agustin Cassani, Senior Software Engineer & Technical Leader with 18+ years of experience.",
+  keywords: [
+    "software engineer resume",
+    "senior developer resume",
+    "full-stack developer resume",
+    "technical leader resume",
+    "Agustin Cassani resume",
+    "React developer resume",
+    "Node.js engineer resume",
+  ],
 }
 
 export default function ResumePage() {

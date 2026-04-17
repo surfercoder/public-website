@@ -151,7 +151,7 @@ function Navbar() {
                 >
                   {link.name}
                   {activeSection === link.section && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black dark:bg-white transition-all duration-300" />
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-950 dark:bg-white transition-all duration-300" />
                   )}
                 </Link>
               ))}
@@ -212,7 +212,7 @@ function Navbar() {
             >
               {link.name}
               {activeSection === link.section && (
-                <span className="absolute bottom-0 left-0 w-16 h-0.5 bg-black dark:bg-white transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-16 h-0.5 bg-gray-950 dark:bg-white transition-all duration-300" />
               )}
             </Link>
           ))}
