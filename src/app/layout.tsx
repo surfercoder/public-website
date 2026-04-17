@@ -9,6 +9,7 @@ import Navbar from "@/components/navbar"
 import SeoJsonLd from "@/components/seo-jsonld"
 import PerformanceMonitor from "@/components/performance-monitor"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -108,6 +109,7 @@ export default function RootLayout({
           <Toaster />
         </ThemeProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
