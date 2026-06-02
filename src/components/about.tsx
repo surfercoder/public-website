@@ -73,14 +73,14 @@ export default function About() {
 
           <div className="order-1 lg:order-2 flex justify-center">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-xl">
-              <Image 
-                alt="Agustin Cassani" 
-                className="object-cover" 
-                fill 
+              <Image
+                alt="Agustin Cassani"
+                className="object-cover"
+                fill
                 sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 320px"
                 src="/profile-image.jpeg"
-                priority={true}
                 quality={85}
+                loading="lazy"
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
               />

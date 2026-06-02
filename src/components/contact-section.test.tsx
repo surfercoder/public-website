@@ -99,10 +99,10 @@ describe('ContactSection', () => {
     expect(screen.getByTestId('instagram-icon')).toBeInTheDocument();
   });
 
-  it('renders the contact form', () => {
+  it('renders the contact form', async () => {
     render(<ContactSection />);
 
-    expect(screen.getByTestId('contact-form')).toBeInTheDocument();
+    expect(await screen.findByTestId('contact-form')).toBeInTheDocument();
     expect(screen.getByText('Send Me a Message')).toBeInTheDocument();
     expect(screen.getByText("Fill out the form below and I'll get back to you as soon as possible.")).toBeInTheDocument();
   });

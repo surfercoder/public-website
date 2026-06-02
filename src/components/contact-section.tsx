@@ -1,9 +1,11 @@
 import React from "react"
+import dynamic from "next/dynamic"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { Linkedin, Github, Instagram } from "@/components/brand-icons"
-import ContactForm from "@/components/contact-form"
 import { ObfuscatedEmailLink, ObfuscatedEmailText } from "@/components/obfuscated-email"
+
+const ContactForm = dynamic(() => import("@/components/contact-form"))
 
 const contactInfo = [
   {

@@ -112,20 +112,19 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-.pdf-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  width: 100%;
+@keyframes scroll-hint {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
 }
 
-/* For mobile scrolling fix */
-@media (max-width: 768px) {
-  .pdf-container {
-    height: auto;
-    overflow-y: visible;
-  }
+.animate-scroll-hint {
+  animation: scroll-hint 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 @layer base {

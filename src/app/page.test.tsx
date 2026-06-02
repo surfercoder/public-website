@@ -57,12 +57,12 @@ jest.mock('@/components/footer', () => {
 });
 
 describe('Home', () => {
-  it('renders all main sections', () => {
-    const { getByTestId } = render(<Home />);
+  it('renders all main sections', async () => {
+    const { getByTestId, findByTestId } = render(<Home />);
 
     expect(getByTestId('hero')).toBeInTheDocument();
     expect(getByTestId('about')).toBeInTheDocument();
-    expect(getByTestId('experience')).toBeInTheDocument();
+    expect(await findByTestId('experience')).toBeInTheDocument();
     expect(getByTestId('projects')).toBeInTheDocument();
     expect(getByTestId('skills')).toBeInTheDocument();
     expect(getByTestId('education')).toBeInTheDocument();
@@ -78,8 +78,10 @@ describe('Home', () => {
     expect(main).toHaveClass('min-h-screen');
   });
 
-  it('renders sections in correct order', () => {
-    const { container } = render(<Home />);
+  it('renders sections in correct order', async () => {
+    const { container, findByTestId } = render(<Home />);
+    await findByTestId('experience');
+
     const main = container.querySelector('main');
     const children = main?.children;
 

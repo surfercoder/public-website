@@ -1,13 +1,11 @@
 import type React from "react"
 import "@/app/globals.css"
-import "@/app/critical.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import Navbar from "@/components/navbar"
 import SeoJsonLd from "@/components/seo-jsonld"
-import PerformanceMonitor from "@/components/performance-monitor"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 
@@ -102,7 +100,6 @@ export default function RootLayout({
         <SeoJsonLd />
       </head>
       <body className={inter.className}>
-        <PerformanceMonitor />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Navbar />
           {children}

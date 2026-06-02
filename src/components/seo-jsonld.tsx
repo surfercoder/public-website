@@ -1,15 +1,6 @@
 import React from "react"
 
-function JsonLd({ data }: { data: unknown }) {
-  return (
-    <script type="application/ld+json">
-      {JSON.stringify(data)}
-    </script>
-  )
-}
-
 const person = {
-  "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://agustincassani.com/#person",
   name: "Agustin Cassani",
@@ -47,11 +38,8 @@ const person = {
 }
 
 const profilePage = {
-  "@context": "https://schema.org",
   "@type": "ProfilePage",
-  mainEntity: {
-    "@id": "https://agustincassani.com/#person",
-  },
+  mainEntity: { "@id": "https://agustincassani.com/#person" },
   name: "Agustin Cassani | Senior Software Engineer & Technical Leader",
   description:
     "Professional portfolio of Agustin Cassani, a Senior Software Engineer & Technical Leader with 18+ years of experience in web, mobile, and AI-powered solutions.",
@@ -59,7 +47,6 @@ const profilePage = {
 }
 
 const breadcrumbHome = {
-  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
     {
@@ -72,7 +59,6 @@ const breadcrumbHome = {
 }
 
 const website = {
-  "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Agustin Cassani",
   url: "https://agustincassani.com",
@@ -83,13 +69,15 @@ const website = {
   },
 }
 
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [person, profilePage, breadcrumbHome, website],
+}
+
 export default function SeoJsonLd() {
   return (
-    <>
-      <JsonLd data={person} />
-      <JsonLd data={profilePage} />
-      <JsonLd data={breadcrumbHome} />
-      <JsonLd data={website} />
-    </>
+    <script type="application/ld+json">
+      {JSON.stringify(graph)}
+    </script>
   )
 }

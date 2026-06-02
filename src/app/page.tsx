@@ -1,13 +1,15 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Hero from "@/components/hero"
 import About from "@/components/about"
-import Experience from "@/components/experience"
 import Projects from "@/components/projects"
 import Skills from "@/components/skills"
 import Education from "@/components/education"
 import Certifications from "@/components/certifications"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
+
+const Experience = dynamic(() => import("@/components/experience"))
 
 export const metadata: Metadata = {
   title: "Agustin Cassani | Senior Software Engineer & Technical Leader",

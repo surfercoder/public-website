@@ -29,12 +29,6 @@ jest.mock('@/components/seo-jsonld', () => {
   };
 });
 
-jest.mock('@/components/performance-monitor', () => {
-  return function MockPerformanceMonitor() {
-    return null;
-  };
-});
-
 jest.mock('@vercel/speed-insights/next', () => ({
   SpeedInsights: () => null,
 }));

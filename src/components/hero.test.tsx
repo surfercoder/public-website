@@ -1,16 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Hero from './hero';
 
-// Mock framer-motion
-jest.mock('framer-motion', () => ({
-  LazyMotion: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  m: {
-    div: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
-  },
-  domAnimation: {},
-}));
-
-// Mock Next.js Link
 jest.mock('next/link', () => {
   return function MockLink({ children, href, ...props }: { children: React.ReactNode; href: string; [key: string]: unknown }) {
     return (
@@ -21,7 +11,6 @@ jest.mock('next/link', () => {
   };
 });
 
-// Mock lucide-react icons
 jest.mock('lucide-react', () => ({
   ArrowDown: () => <div data-testid="arrow-down-icon" />,
   Mail: () => <div data-testid="mail-icon" />,
@@ -70,62 +59,16 @@ describe('Hero', () => {
     expect(section).toHaveClass('relative', 'h-screen', 'flex', 'items-center', 'justify-center', 'overflow-hidden');
   });
 
-  it('renders background elements', () => {
+  it('renders the background gradient', () => {
     const { container } = render(<Hero />);
 
-    // Check for background gradient
     const gradient = container.querySelector('.bg-gradient-to-br');
     expect(gradient).toBeInTheDocument();
-
-    // Check for animated blob elements
-    const blobs = container.querySelectorAll('.animate-blob');
-    expect(blobs).toHaveLength(3);
   });
 
-  it('sets visibility state on mount', () => {
-    render(<Hero />);
-    // Component should render without errors and show content
-    expect(screen.getByText('Agustin Cassani')).toBeInTheDocument();
-  });
+  it('does not render the un-animated blob decorations', () => {
+    const { container } = render(<Hero />);
 
-  it('handles prefers-reduced-motion detection error', () => {
-    const originalMatchMedia = window.matchMedia;
-
-    // Mock matchMedia to throw an error
-    window.matchMedia = jest.fn(() => {
-      throw new Error('matchMedia error');
-    });
-
-    render(<Hero />);
-
-    // Should render without errors
-    expect(screen.getByText('Agustin Cassani')).toBeInTheDocument();
-
-    // Restore original
-    window.matchMedia = originalMatchMedia;
-  });
-
-  it('handles prefers-reduced-motion detection success', () => {
-    const originalMatchMedia = window.matchMedia;
-
-    // Mock matchMedia to return valid media query
-    window.matchMedia = jest.fn(() => ({
-      matches: true,
-      media: '',
-      onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    })) as typeof window.matchMedia;
-
-    render(<Hero />);
-
-    // Should render without errors and set the state
-    expect(screen.getByText('Agustin Cassani')).toBeInTheDocument();
-
-    // Restore original
-    window.matchMedia = originalMatchMedia;
+    expect(container.querySelectorAll('.animate-blob')).toHaveLength(0);
   });
 });
