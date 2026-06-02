@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import Navbar from './navbar';
-import { getScrolledServer } from '@/lib/navbar-helpers';
+import { getScrolledServer, getHashServer } from '@/lib/navbar-helpers';
 
 // Mock Next.js Link
 jest.mock('next/link', () => {
@@ -157,6 +157,22 @@ describe('Navbar', () => {
     fireEvent.click(mobileAboutLink);
 
     // Menu should be closed - back to menu icon
+    expect(screen.getByTestId('menu-icon')).toBeInTheDocument();
+    expect(screen.queryByTestId('x-icon')).not.toBeInTheDocument();
+  });
+
+  it('closes mobile menu when mobile CV button is clicked', () => {
+    render(<Navbar />);
+
+    const menuButton = screen.getByRole('button', { name: /open main menu/i });
+    fireEvent.click(menuButton); // Open menu
+    expect(screen.getByTestId('x-icon')).toBeInTheDocument();
+
+    // Mobile CV button is the second "CV" element; click it to trigger setIsOpen(false)
+    const mobileCv = screen.getAllByText('CV')[1];
+    fireEvent.click(mobileCv);
+
+    // Menu should be closed
     expect(screen.getByTestId('menu-icon')).toBeInTheDocument();
     expect(screen.queryByTestId('x-icon')).not.toBeInTheDocument();
   });
@@ -507,6 +523,24 @@ describe('Navbar', () => {
 
     // The indicator may or may not be present initially due to async effects
     // but the component should render without errors
+  });
+
+  it('falls back to "/" when pathname becomes null after a rerender', () => {
+    // Unwrap React.memo so rerenders run even when props don't change.
+    const RawNavbar = (Navbar as any).type ?? Navbar;
+
+    // Clear leftover hash from previous tests so prevHash stays stable across the rerender.
+    window.history.pushState({}, '', '/');
+    usePathnameMock.mockReturnValue('/');
+    const { rerender } = render(<RawNavbar />);
+
+    // Switch to null pathname so the sync block fires pathname ?? "/" with the right-side branch.
+    usePathnameMock.mockReturnValue(null as unknown as string);
+    rerender(<RawNavbar />);
+
+    const homeLink = screen.getAllByText('Home')[0];
+    const indicator = homeLink.querySelector('span');
+    expect(indicator).toBeInTheDocument();
   });
 
   it('handles entry.isIntersecting false case', () => {
@@ -1032,6 +1066,10 @@ describe('Navbar', () => {
 
   it('covers getScrolledServer (SSR snapshot for useSyncExternalStore)', () => {
     expect(getScrolledServer()).toBe(false);
+  });
+
+  it('covers getHashServer (SSR snapshot for useSyncExternalStore)', () => {
+    expect(getHashServer()).toBe('');
   });
 
   it('covers window undefined branch explicitly in useEffect', () => {

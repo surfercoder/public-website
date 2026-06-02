@@ -1,12 +1,9 @@
+"use client"
+
+import dynamic from "next/dynamic"
+
 export default function ResumeViewer() {
-  return (
-    <iframe
-      src="/AgustinCassaniCV.pdf#view=FitH"
-      title="Agustin Cassani resume"
-      aria-label="Agustin Cassani resume PDF"
-      className="block w-full h-[80vh] min-h-[600px] border-0"
-      loading="lazy"
-      sandbox="allow-same-origin"
-    />
-  )
+  // Dynamically import the PDF viewer only on the client
+  const PdfViewer = dynamic(() => import("@/components/pdf-viewer"), { ssr: false })
+  return <PdfViewer />
 }

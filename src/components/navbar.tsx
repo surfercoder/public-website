@@ -9,7 +9,9 @@ import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/theme-toggle"
 import { usePathname } from "next/navigation"
 import { getInitialSection } from "@/lib/navigation"
-import { getScrolledServer } from "@/lib/navbar-helpers"
+import { getScrolledServer, getHashServer } from "@/lib/navbar-helpers"
+
+const SECTIONS = ["home", "about", "experience", "projects", "skills", "contact"]
 
 function subscribeToScroll(callback: () => void) {
   window.addEventListener("scroll", callback, { passive: true })
@@ -20,31 +22,37 @@ function getScrolled() {
   return window.scrollY > 10
 }
 
+function subscribeToHash(callback: () => void) {
+  window.addEventListener("hashchange", callback)
+  return () => window.removeEventListener("hashchange", callback)
+}
+
+function getHash() {
+  return window.location.hash
+}
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const scrolled = useSyncExternalStore(subscribeToScroll, getScrolled, getScrolledServer)
+  const hash = useSyncExternalStore(subscribeToHash, getHash, getHashServer)
   const pathname = usePathname()
-  const [activeSection, setActiveSection] = useState(() => {
-    /* istanbul ignore next -- SSR guard: window always exists in browser */
-    if (typeof window === "undefined") return "home"
-    return getInitialSection(
-      pathname ?? "/",
-      window.location.hash,
-      ["home", "about", "experience", "projects", "skills", "contact"]
-    )
-  })
+  // Initial state derived from the hash store; during SSR/hydration this is "" (server snapshot),
+  // and the prev-hash sync block below picks up the real hash on the next render after commit.
+  const [activeSection, setActiveSection] = useState(() =>
+    getInitialSection(pathname ?? "/", hash, SECTIONS)
+  )
   // react-doctor-disable-next-line react-doctor/rerender-state-only-in-handlers -- React-recommended pattern for adjusting state from props (https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes); state is set during render in the conditional below.
   const [prevPathname, setPrevPathname] = useState(pathname)
+  // react-doctor-disable-next-line react-doctor/rerender-state-only-in-handlers -- same React pattern as prevPathname above.
+  const [prevHash, setPrevHash] = useState(hash)
   const observerRefs = useRef<IntersectionObserver[]>([])
 
-  // Define sections to observe
-  const sections = useMemo(() => ["home", "about", "experience", "projects", "skills", "contact"], [])
+  const sections = useMemo(() => SECTIONS, [])
 
-  // Sync active section when pathname changes (React-recommended pattern for adjusting state from props)
-  // istanbul ignore next -- React re-renders immediately, coverage tool cannot track this execution
-  if (prevPathname !== pathname) {
+  // Sync active section when pathname or hash changes (React-recommended pattern for adjusting state from external inputs).
+  if (prevPathname !== pathname || prevHash !== hash) {
     setPrevPathname(pathname)
-    const hash = typeof window !== "undefined" ? window.location.hash : ""
+    setPrevHash(hash)
     setActiveSection(getInitialSection(pathname ?? "/", hash, sections))
   }
 
@@ -169,7 +177,11 @@ function Navbar() {
               <ThemeToggle />
 
               <Button asChild variant="default" className="ml-2">
-                <Link href="/resume" className="flex items-center gap-2">
+                <Link
+                  href="/AgustinCassaniCV.pdf"
+                  download
+                  className="flex items-center gap-2"
+                >
                   <Download className="size-4" />
                   <span>CV</span>
                 </Link>
@@ -230,7 +242,12 @@ function Navbar() {
             <ThemeToggle />
 
             <Button asChild variant="default" className="ml-auto">
-              <Link href="/resume" className="flex items-center gap-2">
+              <Link
+                href="/AgustinCassaniCV.pdf"
+                download
+                className="flex items-center gap-2"
+                onClick={() => setIsOpen(false)}
+              >
                 <Download className="size-4" />
                 <span>CV</span>
               </Link>
