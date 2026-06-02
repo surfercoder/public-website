@@ -69,7 +69,7 @@ function ProjectsInner() {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
                     <h3 id={`project-name-${project.id}`} className="text-xl font-bold text-gray-900 dark:text-white">{project.name}</h3>
-                    <ExternalLink className="h-4 w-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ExternalLink className="size-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>
                   <div className="flex flex-wrap gap-2">

@@ -36,35 +36,35 @@ export default function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card>
                 <CardContent className="p-4 flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-blue-600" />
+                  <MapPin className="size-5 text-blue-600" />
                   <span className="text-gray-700 dark:text-gray-300">Mendoza, Argentina</span>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-4 flex items-center gap-3">
-                  <Briefcase className="h-5 w-5 text-blue-600" />
+                  <Briefcase className="size-5 text-blue-600" />
                   <span className="text-gray-700 dark:text-gray-300">18+ Years Experience</span>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-4 flex items-center gap-3">
-                  <GraduationCap className="h-5 w-5 text-blue-600" />
+                  <GraduationCap className="size-5 text-blue-600" />
                   <span className="text-gray-700 dark:text-gray-300">Master of Computer Science</span>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-4 flex items-center gap-3">
-                  <Calendar className="h-5 w-5 text-blue-600" />
+                  <Calendar className="size-5 text-blue-600" />
                   <span className="text-gray-700 dark:text-gray-300">Available for Projects</span>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-4 flex items-center gap-3">
-                  <Globe2 className="h-5 w-5 text-blue-600" />
+                  <Globe2 className="size-5 text-blue-600" />
                   <span className="text-gray-700 dark:text-gray-300">Remote (Americas/EMEA)</span>
                 </CardContent>
               </Card>

@@ -33,6 +33,23 @@ const EXPERIENCES: Experience[] = [
       ],
     },
     {
+      id: "imi-health",
+      company: "IMI Health",
+      position: "Co-Founder & CTO",
+      period: "MARCH 2025 - PRESENT",
+      location: "Mendoza, Argentina",
+      type: "Remote",
+      achievements: [
+        "Architected and delivered an end-to-end AI-powered SaaS platform from zero to production launch (currently live with early-access physicians), enabling doctors to generate structured medical reports via real-time voice transcription and ambient AI",
+        "Engineered full-stack platform using Next.js, TypeScript, Supabase, and Tailwind CSS / shadcn/ui, establishing a scalable foundation designed to support rapid user growth",
+        "Integrated AssemblyAI for real-time and post-consultation voice transcription, reducing physician documentation time by eliminating manual data entry across both dictation and live ambient recording modes",
+        "Implemented Anthropic Claude API for intelligent medical report generation, producing dual-format outputs: a structured clinical document for the physician and a plain-language summary for the patient",
+        "Built automated multi-channel delivery system using Resend and WhatsApp Business API, enabling one-click report dispatch to doctors and patients",
+        "Designed digital patient consent workflow embedded directly into the report pipeline, ensuring legal compliance and audit-ready documentation on every consultation",
+        "Built and shipped a companion React Native / Expo mobile application for iOS and Android with full feature parity to the web platform, extending ambient AI recording to live in-person consultations",
+      ],
+    },
+    {
       id: "leverege",
       company: "Leverege",
       position: "Senior React Native Developer",
@@ -207,10 +224,10 @@ export default function Experience() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="size-4" />
                     <span>{exp.period}</span>
                     <span className="mx-2">•</span>
-                    <Briefcase className="h-4 w-4" />
+                    <Briefcase className="size-4" />
                     <span>{exp.location}</span>
                   </div>
 
@@ -239,11 +256,11 @@ export default function Experience() {
             <Button variant="outline" onClick={() => setShowAll(!showAll)} className="flex items-center gap-2">
               {showAll ? (
                 <>
-                  Show Less <ChevronUp className="h-4 w-4" />
+                  Show Less <ChevronUp className="size-4" />
                 </>
               ) : (
                 <>
-                  Show More <ChevronDown className="h-4 w-4" />
+                  Show More <ChevronDown className="size-4" />
                 </>
               )}
             </Button>
@@ -253,7 +270,7 @@ export default function Experience() {
         <div className="text-center mt-12">
           <Button asChild variant="outline">
             <Link href="/resume" className="flex items-center gap-2">
-              View Full Resume <ExternalLink className="h-4 w-4" />
+              View Full Resume <ExternalLink className="size-4" />
             </Link>
           </Button>
         </div>

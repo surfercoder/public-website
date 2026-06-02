@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
-import Navbar, { getScrolledServer } from './navbar';
+import Navbar from './navbar';
+import { getScrolledServer } from '@/lib/navbar-helpers';
 
 // Mock Next.js Link
 jest.mock('next/link', () => {
@@ -426,7 +427,7 @@ describe('Navbar', () => {
   it('handles server-side rendering when window is undefined', () => {
     // Mock window as undefined to simulate SSR
     const originalWindow = (global as any).window;
-    delete (global as any).window;
+    (global as any).window = undefined;
 
     try {
       usePathnameMock.mockReturnValue('/');
@@ -446,7 +447,7 @@ describe('Navbar', () => {
   it('handles server-side rendering by checking window existence', () => {
     // Create a test that specifically covers the typeof window !== "undefined" branch
     const originalWindow = (global as any).window;
-    delete (global as any).window;
+    (global as any).window = undefined;
 
     try {
       usePathnameMock.mockReturnValue('/');
@@ -643,7 +644,7 @@ describe('Navbar', () => {
   it('covers window undefined branch in useEffect', () => {
     // Test with window completely undefined during component initialization
     const originalWindow = (global as any).window;
-    delete (global as any).window;
+    (global as any).window = undefined;
 
     try {
       usePathnameMock.mockReturnValue('/');
@@ -665,7 +666,7 @@ describe('Navbar', () => {
 
     // Now test without window
     const originalWindow = (global as any).window;
-    delete (global as any).window;
+    (global as any).window = undefined;
 
     try {
       usePathnameMock.mockReturnValue('/resume');
@@ -734,7 +735,7 @@ describe('Navbar', () => {
 
     // Start with window undefined
     const originalWindow = (global as any).window;
-    delete (global as any).window;
+    (global as any).window = undefined;
 
     try {
       usePathnameMock.mockReturnValue('/');
@@ -779,7 +780,7 @@ describe('Navbar', () => {
     const { rerender } = render(<Navbar />);
 
     // Second test: delete window completely to test the typeof branch
-    delete (global as any).window;
+    (global as any).window = undefined;
 
     try {
       // Trigger the useEffect by changing pathname
@@ -807,7 +808,7 @@ describe('Navbar', () => {
       const { rerender } = render(<Navbar />);
 
       // Test 2: Completely remove window from global scope
-      delete (global as any).window;
+      (global as any).window = undefined;
       // Also try setting it to undefined explicitly
       (global as any).window = undefined;
 
@@ -872,7 +873,7 @@ describe('Navbar', () => {
 
     try {
       // Start with no window
-      delete (global as any).window;
+      (global as any).window = undefined;
       usePathnameMock.mockReturnValue('/');
 
       const { rerender } = render(<Navbar />);
@@ -916,7 +917,6 @@ describe('Navbar', () => {
       usePathnameMock.mockReturnValue('/');
 
       // Test 1: Completely undefine window in every possible way
-      delete originalGlobal.window;
       originalGlobal.window = undefined;
 
       const { rerender } = render(<Navbar />);
@@ -964,7 +964,7 @@ describe('Navbar', () => {
       usePathnameMock.mockReturnValue('/');
 
       // Method 1: Test with completely undefined window
-      delete (global as any).window;
+      (global as any).window = undefined;
       (global as any).window = undefined;
 
       const { rerender } = render(<Navbar />);
@@ -1040,7 +1040,7 @@ describe('Navbar', () => {
 
     try {
       // Remove window entirely
-      delete (global as any).window;
+      (global as any).window = undefined;
 
       usePathnameMock.mockReturnValue('/');
 

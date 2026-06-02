@@ -43,9 +43,9 @@ export default function Hero() {
         className="absolute inset-0 z-0 opacity-20 motion-reduce:hidden"
         aria-hidden="true"
       >
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
+        <div className="absolute top-1/4 left-1/4 size-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
+        <div className="absolute top-1/3 right-1/4 size-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute bottom-1/4 left-1/3 size-64 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -88,7 +88,7 @@ export default function Hero() {
           >
             <Button asChild size="lg" className="text-md">
               <Link href="/#contact" className="flex items-center gap-2">
-                <Mail className="h-5 w-5" />
+                <Mail className="size-5" />
                 Contact Me
               </Link>
             </Button>
@@ -113,7 +113,7 @@ export default function Hero() {
           }}
           aria-hidden="true"
         >
-          <ArrowDown className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+          <ArrowDown className="size-6 text-gray-600 dark:text-gray-400" />
         </m.div>
       </div>
     </section>

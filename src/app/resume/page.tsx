@@ -31,14 +31,14 @@ export default function ResumePage() {
           <div className="flex gap-4">
             <Button asChild variant="outline">
               <Link href="/" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="size-4" />
                 Back to Home
               </Link>
             </Button>
 
             <Button asChild>
               <Link href="/AgustinCassaniCV.pdf" download className="flex items-center gap-2">
-                <Download className="h-4 w-4" />
+                <Download className="size-4" />
                 Download PDF
               </Link>
             </Button>

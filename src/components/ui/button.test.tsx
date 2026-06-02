@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Link from 'next/link';
-import { Button, buttonVariants } from './button';
+import { Button } from './button';
+import { buttonVariants } from './button-variants';
 
 // Mock Radix UI Slot
 jest.mock('@radix-ui/react-slot', () => ({
@@ -41,7 +42,7 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveClass('h-11', 'px-8');
 
     rerender(<Button size="icon">Icon</Button>);
-    expect(screen.getByRole('button')).toHaveClass('h-10', 'w-10');
+    expect(screen.getByRole('button')).toHaveClass('size-10');
   });
 
   it('renders as child component when asChild is true', () => {
@@ -116,7 +117,7 @@ describe('Button', () => {
     expect(buttonVariants({ size: 'default' })).toContain('h-10');
     expect(buttonVariants({ size: 'sm' })).toContain('h-9');
     expect(buttonVariants({ size: 'lg' })).toContain('h-11');
-    expect(buttonVariants({ size: 'icon' })).toContain('w-10');
+    expect(buttonVariants({ size: 'icon' })).toContain('size-10');
 
     // Combined and with custom className
     expect(buttonVariants({ variant: 'outline', size: 'sm', className: 'extra' })).toContain('extra');

@@ -7,13 +7,13 @@ import { ObfuscatedEmailLink, ObfuscatedEmailText } from "@/components/obfuscate
 
 const contactInfo = [
   {
-    icon: <Phone className="h-5 w-5 text-blue-600" />,
+    icon: <Phone className="size-5 text-blue-600" />,
     title: "Phone",
     value: "+54 9 (261) 688-6005",
     link: "tel:+5492616886005",
   },
   {
-    icon: <MapPin className="h-5 w-5 text-blue-600" />,
+    icon: <MapPin className="size-5 text-blue-600" />,
     title: "Location",
     value: "Mendoza, Argentina",
     link: "https://maps.google.com/?q=Mendoza,Argentina",
@@ -22,17 +22,17 @@ const contactInfo = [
 
 const socialLinks = [
   {
-    icon: <Linkedin className="h-5 w-5" />,
+    icon: <Linkedin className="size-5" />,
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/agustincassani/",
   },
   {
-    icon: <Github className="h-5 w-5" />,
+    icon: <Github className="size-5" />,
     name: "GitHub",
     url: "https://github.com/surfercoder/",
   },
   {
-    icon: <Instagram className="h-5 w-5" />,
+    icon: <Instagram className="size-5" />,
     name: "Instagram",
     url: "https://www.instagram.com/thesurferdaddy/",
   },
@@ -59,7 +59,7 @@ function ContactSection() {
                 className="flex items-start gap-4 group"
               >
                 <div className="p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-                  <Mail className="h-5 w-5 text-blue-600" />
+                  <Mail className="size-5 text-blue-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-medium text-gray-900 dark:text-white">Email</h4>

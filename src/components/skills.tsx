@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Code, Database, Layout, Server, Terminal, TestTube, Cloud, Blocks, Sparkles } from "lucide-react"
+import { Code, Database, Layout, Server, Terminal, TestTube, Cloud, Blocks, Sparkles, Workflow } from "lucide-react"
 
 interface SkillCategory {
   title: string
@@ -11,7 +11,7 @@ interface SkillCategory {
 const SKILL_CATEGORIES: SkillCategory[] = [
     {
       title: "AI & Integrations",
-      icon: <Sparkles className="h-6 w-6 text-blue-600" />,
+      icon: <Sparkles className="size-6 text-blue-600" />,
       skills: [
         "Anthropic Claude API",
         "AssemblyAI",
@@ -21,42 +21,47 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     },
     {
       title: "Frontend & Mobile",
-      icon: <Layout className="h-6 w-6 text-blue-600" />,
+      icon: <Layout className="size-6 text-blue-600" />,
       skills: ["React", "React Native", "Expo", "Next.js", "TypeScript", "JavaScript", "Redux", "Apollo Client"],
     },
     {
       title: "Backend & APIs",
-      icon: <Server className="h-6 w-6 text-blue-600" />,
+      icon: <Server className="size-6 text-blue-600" />,
       skills: ["Node.js", "Express", "Apollo Server", "GraphQL", "REST APIs", "Microservices Architecture"],
     },
     {
       title: "Databases & Query Languages",
-      icon: <Database className="h-6 w-6 text-blue-600" />,
+      icon: <Database className="size-6 text-blue-600" />,
       skills: ["Supabase", "PostgreSQL", "MongoDB", "SQL", "Neo4j", "GraphQL"],
     },
     {
       title: "UI Frameworks & Design Systems",
-      icon: <Code className="h-6 w-6 text-blue-600" />,
+      icon: <Code className="size-6 text-blue-600" />,
       skills: ["Material UI", "Tailwind CSS", "Ant Design", "Shadcn/ui", "Storybook"],
     },
     {
       title: "Testing & Quality Assurance",
-      icon: <TestTube className="h-6 w-6 text-blue-600" />,
+      icon: <TestTube className="size-6 text-blue-600" />,
       skills: ["Jest", "React Testing Library", "Cypress", "Playwright", "TDD Methodologies"],
     },
     {
       title: "DevOps & Infrastructure",
-      icon: <Cloud className="h-6 w-6 text-blue-600" />,
+      icon: <Cloud className="size-6 text-blue-600" />,
       skills: ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD Pipelines", "GitLab CI", "GitHub Actions"],
     },
     {
+      title: "Architecture & Methodology",
+      icon: <Workflow className="size-6 text-blue-600" />,
+      skills: ["Microservices", "System Design", "Agile/Scrum", "Component Libraries (Storybook)"],
+    },
+    {
       title: "Blockchain Technology",
-      icon: <Blocks className="h-6 w-6 text-blue-600" />,
+      icon: <Blocks className="size-6 text-blue-600" />,
       skills: ["Ethereum", "Smart Contracts Development", "Web3.js", "DeFi Applications", "NFT Implementation"],
     },
     {
       title: "Development Tools",
-      icon: <Terminal className="h-6 w-6 text-blue-600" />,
+      icon: <Terminal className="size-6 text-blue-600" />,
       skills: ["Git", "Cursor", "Windsurf", "Claude Code", "Figma", "Postman"],
     },
 ]
@@ -87,7 +92,7 @@ function SkillsInner() {
                   <ul className="space-y-2">
                     {category.skills.map((skill) => (
                       <li key={skill} className="text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+                        <span className="size-1.5 bg-blue-600 rounded-full"></span>
                         {skill}
                       </li>
                     ))}

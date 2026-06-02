@@ -19,6 +19,7 @@ jest.mock('lucide-react', () => ({
   Cloud: () => <div data-testid="cloud-icon" />,
   Blocks: () => <div data-testid="blocks-icon" />,
   Sparkles: () => <div data-testid="sparkles-icon" />,
+  Workflow: () => <div data-testid="workflow-icon" />,
 }));
 
 describe('Skills', () => {

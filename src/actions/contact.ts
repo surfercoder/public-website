@@ -6,6 +6,7 @@ import { ActionState } from '@/lib/utils';
 import ContactSchema from '@/schemas/contact';
 import { fromErrorToActionState, toActionState } from '@/lib/utils';
 
+// react-doctor-disable-next-line react-doctor/server-auth-actions -- Public contact form on a personal portfolio; no user auth model exists.
 export async function sendContact(_actionState: ActionState, formData: FormData) {
   try {
     ContactSchema.parse(Object.fromEntries(formData));

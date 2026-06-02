@@ -9,12 +9,27 @@ interface CertificationItem {
 
 const certifications: CertificationItem[] = [
   {
+    name: "Model Context Protocol: Advanced Topics",
+    issuer: "Anthropic",
+    period: "2026",
+  },
+  {
+    name: "Introduction to Model Context Protocol",
+    issuer: "Anthropic",
+    period: "2026",
+  },
+  {
     name: "Building with the Claude API",
     issuer: "Anthropic",
     period: "2026",
   },
   {
     name: "Claude Code in Action",
+    issuer: "Anthropic",
+    period: "2026",
+  },
+  {
+    name: "Claude Code 101",
     issuer: "Anthropic",
     period: "2026",
   },

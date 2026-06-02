@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center md:items-end">
-            <div className="flex space-x-4 mb-4">
+            <div className="flex gap-4 mb-4">
               <a
                 href="https://www.linkedin.com/in/agustincassani/"
                 target="_blank"
@@ -29,7 +29,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="size-5" />
               </a>
               <a
                 href="https://github.com/surfercoder/"
@@ -38,7 +38,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="GitHub"
               >
-                <Github className="h-5 w-5" />
+                <Github className="size-5" />
               </a>
               <a
                 href="https://www.instagram.com/thesurferdaddy/"
@@ -47,13 +47,13 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="size-5" />
               </a>
               <ObfuscatedEmailLink
                 className="text-gray-400 hover:text-white transition-colors"
                 ariaLabel="Email"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="size-5" />
               </ObfuscatedEmailLink>
             </div>
             <p className="text-gray-400 text-sm">© {currentYear} Agustin Cassani. All rights reserved.</p>

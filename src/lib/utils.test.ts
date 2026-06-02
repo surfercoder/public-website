@@ -14,7 +14,7 @@ describe('utils', () => {
     it('should handle ZodError correctly', () => {
       const schema = z.object({
         name: z.string().min(3),
-        email: z.string().email(),
+        email: z.email(),
       });
       
       const result = schema.safeParse({ name: 'a', email: 'invalid-email' });

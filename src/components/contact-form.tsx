@@ -47,7 +47,6 @@ export default function ContactForm() {
       action={formAction}
       className="space-y-4"
       onSubmit={onSubmit}
-      role="form"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-y-1">
@@ -75,7 +74,7 @@ export default function ContactForm() {
         {isPending ? (
           <span className="flex items-center gap-2">
             <svg
-              className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+              className="animate-spin -ml-1 mr-2 size-4 text-white"
               fill="none"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -94,11 +93,11 @@ export default function ContactForm() {
                 fill="currentColor"
               ></path>
             </svg>
-            Sending...
+            Sending…
           </span>
         ) : (
           <span className="flex items-center gap-2">
-            <Send className="h-4 w-4" />
+            <Send className="size-4" />
             Send Message
           </span>
         )}

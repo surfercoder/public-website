@@ -38,9 +38,9 @@ export default function ThemeToggle() {
     >
       {/* Sun is the default/SSR fallback; Moon shown only when mounted and dark */}
       {mounted && isDark ? (
-        <Moon className="h-5 w-5" />
+        <Moon className="size-5" />
       ) : (
-        <Sun className="h-5 w-5" />
+        <Sun className="size-5" />
       )}
     </Button>
   )

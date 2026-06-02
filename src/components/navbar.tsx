@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/theme-toggle"
 import { usePathname } from "next/navigation"
 import { getInitialSection } from "@/lib/navigation"
+import { getScrolledServer } from "@/lib/navbar-helpers"
 
 function subscribeToScroll(callback: () => void) {
   window.addEventListener("scroll", callback, { passive: true })
@@ -17,10 +18,6 @@ function subscribeToScroll(callback: () => void) {
 
 function getScrolled() {
   return window.scrollY > 10
-}
-
-export function getScrolledServer() {
-  return false
 }
 
 function Navbar() {
@@ -36,6 +33,7 @@ function Navbar() {
       ["home", "about", "experience", "projects", "skills", "contact"]
     )
   })
+  // react-doctor-disable-next-line react-doctor/rerender-state-only-in-handlers -- React-recommended pattern for adjusting state from props (https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes); state is set during render in the conditional below.
   const [prevPathname, setPrevPathname] = useState(pathname)
   const observerRefs = useRef<IntersectionObserver[]>([])
 
@@ -102,17 +100,17 @@ function Navbar() {
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/agustincassani/",
-      icon: <Linkedin className="h-5 w-5" />,
+      icon: <Linkedin className="size-5" />,
     },
     {
       name: "GitHub",
       href: "https://github.com/surfercoder/",
-      icon: <Github className="h-5 w-5" />,
+      icon: <Github className="size-5" />,
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/thesurferdaddy/",
-      icon: <Instagram className="h-5 w-5" />,
+      icon: <Instagram className="size-5" />,
     },
   ], [])
 
@@ -137,8 +135,8 @@ function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -157,7 +155,7 @@ function Navbar() {
               ))}
             </div>
 
-            <div className="hidden md:flex items-center space-x-2 ml-4">
+            <div className="hidden md:flex items-center gap-2 ml-4">
               {socialLinks.map((link) => (
                 <Button key={link.name} variant="ghost" size="icon" asChild className="rounded-full text-gray-700 dark:text-gray-200">
                   <Link href={link.href} target="_blank" rel="noopener noreferrer">
@@ -172,7 +170,7 @@ function Navbar() {
 
               <Button asChild variant="default" className="ml-2">
                 <Link href="/resume" className="flex items-center gap-2">
-                  <Download className="h-4 w-4" />
+                  <Download className="size-4" />
                   <span>CV</span>
                 </Link>
               </Button>
@@ -182,15 +180,16 @@ function Navbar() {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
+              type="button"
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white focus:outline-none"
               aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
+                <X className="block size-6" aria-hidden="true" />
               ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
+                <Menu className="block size-6" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -217,7 +216,7 @@ function Navbar() {
             </Link>
           ))}
 
-          <div className="flex items-center space-x-2 pt-4 px-3">
+          <div className="flex items-center gap-2 pt-4 px-3">
             {socialLinks.map((link) => (
               <Button key={link.name} variant="ghost" size="icon" asChild className="rounded-full text-gray-700 dark:text-gray-200">
                 <Link href={link.href} target="_blank" rel="noopener noreferrer">
@@ -232,7 +231,7 @@ function Navbar() {
 
             <Button asChild variant="default" className="ml-auto">
               <Link href="/resume" className="flex items-center gap-2">
-                <Download className="h-4 w-4" />
+                <Download className="size-4" />
                 <span>CV</span>
               </Link>
             </Button>

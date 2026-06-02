@@ -52,17 +52,17 @@ export default function Education() {
             <Card key={item.degree}>
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
-                  <GraduationCap className="h-6 w-6 text-blue-600" />
+                  <GraduationCap className="size-6 text-blue-600" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.degree}</h3>
                     <p className="text-gray-700 dark:text-gray-300">{item.institution}</p>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mt-2">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar className="size-4" />
                       <span>{item.period}</span>
                       {item.location && (
                         <>
                           <span className="mx-1">•</span>
-                          <MapPin className="h-4 w-4" />
+                          <MapPin className="size-4" />
                           <span>{item.location}</span>
                         </>
                       )}
