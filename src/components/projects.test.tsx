@@ -98,6 +98,7 @@ describe('Projects', () => {
 
   it('renders external link icons', () => {
     render(<Projects />);
-    expect(screen.getAllByTestId('external-link-icon').length).toBe(2);
+    // Two icons per project card: one in the hover "Visit" pill and one next to the title.
+    expect(screen.getAllByTestId('external-link-icon').length).toBe(4);
   });
 });

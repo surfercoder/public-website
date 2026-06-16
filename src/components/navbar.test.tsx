@@ -87,7 +87,9 @@ describe('Navbar', () => {
   it('renders navbar with logo', () => {
     render(<Navbar />);
 
-    expect(screen.getByText('Agustin Cassani')).toBeInTheDocument();
+    // Brand mark splits "Agustin" and "Cassani" into nested spans (Cassani gets the gradient style).
+    const brand = screen.getByText((_, node) => node?.textContent === 'Agustin Cassani' && node?.tagName === 'SPAN');
+    expect(brand).toBeInTheDocument();
   });
 
   it('renders all navigation links', () => {
@@ -637,11 +639,10 @@ describe('Navbar', () => {
       const desktopIndicator = desktopLink.querySelector('span');
       expect(desktopIndicator).toBeInTheDocument();
 
-      // Check mobile active indicator (for non-Resume links, since Resume behaves differently)
+      // Mobile active state is communicated via a class on the link itself, not a span indicator.
       if (linkText !== 'Resume') {
         const mobileLink = screen.getAllByText(linkText)[1];
-        const mobileIndicator = mobileLink.querySelector('span');
-        expect(mobileIndicator).toBeInTheDocument();
+        expect(mobileLink).toHaveClass('font-semibold');
       }
     });
   });

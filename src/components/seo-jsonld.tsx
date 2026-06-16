@@ -74,10 +74,19 @@ const graph = {
   "@graph": [person, profilePage, breadcrumbHome, website],
 }
 
+function escapeJsonForScript(value: string) {
+  return value
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029")
+}
+
+const safeJson = escapeJsonForScript(JSON.stringify(graph))
+
 export default function SeoJsonLd() {
   return (
-    <script type="application/ld+json">
-      {JSON.stringify(graph)}
-    </script>
+    <script type="application/ld+json">{safeJson}</script>
   )
 }

@@ -5,6 +5,11 @@ import RootLayout, { metadata } from './layout';
 jest.mock('next/font/google', () => ({
   Inter: jest.fn(() => ({
     className: 'inter-font',
+    variable: '--font-inter',
+  })),
+  Space_Grotesk: jest.fn(() => ({
+    className: 'space-grotesk-font',
+    variable: '--font-space-grotesk',
   })),
 }));
 

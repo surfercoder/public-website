@@ -1,7 +1,7 @@
 import type React from "react"
 import "@/app/globals.css"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Space_Grotesk } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import Navbar from "@/components/navbar"
@@ -9,10 +9,19 @@ import SeoJsonLd from "@/components/seo-jsonld"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  variable: "--font-inter",
+  fallback: ["system-ui", "arial"]
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  variable: "--font-space-grotesk",
   fallback: ["system-ui", "arial"]
 })
 
@@ -95,11 +104,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <SeoJsonLd />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Navbar />
           {children}

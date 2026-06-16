@@ -14,6 +14,7 @@ jest.mock('next/link', () => {
 jest.mock('lucide-react', () => ({
   ArrowDown: () => <div data-testid="arrow-down-icon" />,
   Mail: () => <div data-testid="mail-icon" />,
+  Sparkles: () => <div data-testid="sparkles-icon" />,
 }));
 
 describe('Hero', () => {

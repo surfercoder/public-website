@@ -192,68 +192,103 @@ export default function Experience() {
 
   return (
     <LazyMotion features={domAnimation}>
-    <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="relative py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+      {/* Decorative background */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-grid bg-grid-mask opacity-40 dark:opacity-20" />
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-25"
+        style={{ background: "radial-gradient(closest-side, color-mix(in srgb, var(--brand-2) 50%, transparent), transparent)" }}
+      />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Professional Experience</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider bg-[color-mix(in_srgb,var(--brand)_10%,transparent)] text-[var(--brand)] border border-[color-mix(in_srgb,var(--brand)_25%,transparent)] mb-5">
+            <span className="size-1.5 rounded-full bg-[var(--brand)] animate-ping-soft" />
+            Career
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            <span className="bg-gradient-to-r from-foreground via-foreground to-[var(--brand)] bg-clip-text text-transparent">Professional Experience</span>
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             My journey through various roles and companies
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
-          {displayedExperiences.map((exp, index) => (
-            <m.div
-              key={exp.id}
-              initial={reduced ? undefined : { opacity: 0, y: 16 }}
-              animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-              transition={reduced ? { duration: 0 } : { duration: 0.3, delay: index * 0.08 }}
-            >
-              <Card className="border-b-2 border-b-blue-600">
-                <CardHeader className="pb-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-xl font-bold">{exp.position}</CardTitle>
-                      <CardDescription className="text-lg font-medium mt-1">{exp.company}</CardDescription>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full">{exp.type}</span>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    <Calendar className="size-4" />
-                    <span>{exp.period}</span>
-                    <span className="mx-2">•</span>
-                    <Briefcase className="size-4" />
-                    <span>{exp.location}</span>
-                  </div>
+        <div className="relative max-w-4xl mx-auto">
+          {/* Timeline vertical line */}
+          <div aria-hidden="true" className="hidden md:block absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-[var(--brand)]/40 via-[var(--brand-2)]/30 to-transparent" />
 
-                  <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="achievements">
-                      <AccordionTrigger className="text-sm font-medium">Key Achievements</AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="list-disc pl-5 space-y-2 mt-2">
-                          {exp.achievements.map((achievement) => (
-                            <li key={achievement} className="text-gray-700 dark:text-gray-300">
-                              {achievement}
-                            </li>
-                          ))}
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </CardContent>
-              </Card>
-            </m.div>
-          ))}
+          <div className="grid grid-cols-1 gap-6">
+            {displayedExperiences.map((exp, index) => (
+              <m.div
+                key={exp.id}
+                initial={reduced ? undefined : { opacity: 0, y: 16 }}
+                animate={reduced ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                transition={reduced ? { duration: 0 } : { duration: 0.35, delay: index * 0.08 }}
+                className="md:pl-12 relative"
+              >
+                {/* Timeline dot */}
+                <span aria-hidden="true" className="hidden md:block absolute left-[10px] top-8 size-2.5 rounded-full bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)] ring-4 ring-background shadow-md shadow-[color-mix(in_srgb,var(--brand)_40%,transparent)]" />
+
+                <Card className="group relative overflow-hidden border-[color-mix(in_srgb,var(--foreground)_8%,transparent)] bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[color-mix(in_srgb,var(--brand)_15%,transparent)] hover:border-[color-mix(in_srgb,var(--brand)_30%,transparent)]">
+                  {/* Animated gradient bar */}
+                  <span aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--brand)] via-[var(--brand-2)] to-[var(--brand-3)]" />
+                  <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[color-mix(in_srgb,var(--brand)_4%,transparent)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <CardHeader className="pb-2 pl-6 relative z-10">
+                    <div className="flex justify-between items-start gap-3 flex-wrap">
+                      <div>
+                        <CardTitle className="text-xl font-bold">{exp.position}</CardTitle>
+                        <CardDescription className="text-base font-medium mt-1 text-[var(--brand)]">{exp.company}</CardDescription>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-[color-mix(in_srgb,var(--brand)_10%,transparent)] text-[var(--brand)] border border-[color-mix(in_srgb,var(--brand)_25%,transparent)]">{exp.type}</span>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pl-6 relative z-10">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground mb-4">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Calendar className="size-4" />
+                        {exp.period}
+                      </span>
+                      <span className="hidden sm:inline opacity-40">•</span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Briefcase className="size-4" />
+                        {exp.location}
+                      </span>
+                    </div>
+
+                    <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="achievements" className="border-[color-mix(in_srgb,var(--foreground)_10%,transparent)]">
+                        <AccordionTrigger className="text-sm font-semibold cursor-pointer hover:text-[var(--brand)] transition-colors">Key Achievements</AccordionTrigger>
+                        <AccordionContent>
+                          <ul className="space-y-2 mt-2">
+                            {exp.achievements.map((achievement) => (
+                              <li key={achievement} className="flex items-start gap-3 text-foreground/80">
+                                <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)]" />
+                                <span>{achievement}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </CardContent>
+                </Card>
+              </m.div>
+            ))}
+          </div>
         </div>
 
         {experiences.length > 4 && (
           <div className="flex justify-center mt-10">
-            <Button variant="outline" onClick={() => setShowAll(!showAll)} className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setShowAll(!showAll)}
+              className="flex items-center gap-2 glass border-[color-mix(in_srgb,var(--brand)_30%,transparent)] hover:bg-[color-mix(in_srgb,var(--brand)_8%,transparent)] hover:border-[color-mix(in_srgb,var(--brand)_50%,transparent)] cursor-pointer transition-all duration-300"
+            >
               {showAll ? (
                 <>
                   Show Less <ChevronUp className="size-4" />
@@ -268,7 +303,11 @@ export default function Experience() {
         )}
 
         <div className="text-center mt-12">
-          <Button asChild variant="outline">
+          <Button
+            asChild
+            variant="outline"
+            className="glass border-[color-mix(in_srgb,var(--brand)_30%,transparent)] hover:bg-[color-mix(in_srgb,var(--brand)_8%,transparent)] hover:border-[color-mix(in_srgb,var(--brand)_50%,transparent)] cursor-pointer transition-all duration-300"
+          >
             <Link href="/resume" className="flex items-center gap-2">
               View Full Resume <ExternalLink className="size-4" />
             </Link>
